@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#0F236A"/>
+  <circle cx="960" cy="540" r="400" fill="#0A1847" opacity="0.15"/>
+  <circle cx="1400" cy="300" r="200" fill="#FD1810" opacity="0.05"/>
+  <circle cx="400" cy="700" r="250" fill="#1A3494" opacity="0.08"/>
+  <text x="960" y="560" text-anchor="middle" font-family="sans-serif" font-size="48" fill="rgba(255,255,255,0.06)" font-weight="700" letter-spacing="12">Service</text>
+  <text x="960" y="620" text-anchor="middle" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.03)" letter-spacing="6">REPLACE WITH YOUR IMAGE</text>
+</svg>

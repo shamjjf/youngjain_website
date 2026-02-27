@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #0F236A;
+  --navy-d: #081445;
+  --navy-l: #1A3494;
+  --red: #FD1810;
+  --red-d: #D01410;
+  --red-l: #FF5A54;
+  --fh: 'Sora', sans-serif;
+  --fb: 'Manrope', sans-serif;
+  --fd: 'Noto Sans Devanagari', sans-serif;
+  --slate: #6B7394;
+  --ice: #EEF1F8;
+  --snow: #FAFBFF;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fh);
+  background: var(--snow);
+  color: var(--navy);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+::selection { background: rgba(253,24,16,0.15); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--snow); }
+::-webkit-scrollbar-thumb { background: rgba(15,35,106,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy); }

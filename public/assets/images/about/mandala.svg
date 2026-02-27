@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Outer glow -->
+  <circle cx="200" cy="200" r="190" fill="url(#glow)"/>
+  <!-- Rings -->
+  <circle cx="200" cy="200" r="170" stroke="#D4872C" stroke-width="0.8" opacity="0.12"/>
+  <circle cx="200" cy="200" r="140" stroke="#D4872C" stroke-width="0.6" opacity="0.1"/>
+  <circle cx="200" cy="200" r="110" stroke="#D4872C" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="200" cy="200" r="80" stroke="#D4872C" stroke-width="0.4" opacity="0.06"/>
+  <!-- 8-pointed petals -->
+  <g fill="#D4872C" opacity="0.08">
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(0 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(45 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(90 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(135 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(180 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(225 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(270 200 200)"/>
+    <ellipse cx="200" cy="140" rx="15" ry="50" transform="rotate(315 200 200)"/>
+  </g>
+  <!-- Inner petals -->
+  <g fill="#D4872C" opacity="0.12">
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(22.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(67.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(112.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(157.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(202.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(247.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(292.5 200 200)"/>
+    <ellipse cx="200" cy="165" rx="8" ry="28" transform="rotate(337.5 200 200)"/>
+  </g>
+  <!-- Center -->
+  <circle cx="200" cy="200" r="10" fill="#D4872C" opacity="0.15"/>
+  <circle cx="200" cy="200" r="4" fill="#D4872C" opacity="0.25"/>
+  <!-- Defs -->
+  <defs>
+    <radialGradient id="glow" cx="40%" cy="40%">
+      <stop offset="0%" stop-color="#D4872C" stop-opacity="0.06"/>
+      <stop offset="60%" stop-color="#F5EDE0" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

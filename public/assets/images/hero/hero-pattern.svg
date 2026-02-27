@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" opacity="0.06">
+  <!-- Geometric Jain-inspired pattern -->
+  <g stroke="#D4872C" stroke-width="0.5">
+    <!-- Diamond grid -->
+    <path d="M200 0 L400 200 L200 400 L0 200 Z"/>
+    <path d="M200 40 L360 200 L200 360 L40 200 Z"/>
+    <path d="M200 80 L320 200 L200 320 L80 200 Z"/>
+    <path d="M200 120 L280 200 L200 280 L120 200 Z"/>
+    <path d="M200 160 L240 200 L200 240 L160 200 Z"/>
+  </g>
+  <!-- Corner lotus hints -->
+  <g fill="#D4872C" opacity="0.3">
+    <circle cx="200" cy="200" r="6"/>
+    <circle cx="200" cy="0" r="4"/>
+    <circle cx="400" cy="200" r="4"/>
+    <circle cx="200" cy="400" r="4"/>
+    <circle cx="0" cy="200" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="90" stroke="#F0C078" stroke-width="1.5" opacity="0.15"/>
+  <circle cx="100" cy="100" r="70" stroke="#F0C078" stroke-width="1" opacity="0.1"/>
+  <path d="M100 30C100 30 75 60 75 85c0 18 11 30 25 30s25-12 25-30C125 60 100 30 100 30z" fill="#F0C078" opacity="0.2"/>
+  <path d="M100 45C100 45 82 68 82 88c0 12 8 20 18 20s18-8 18-20C118 68 100 45 100 45z" fill="#F0C078" opacity="0.35"/>
+  <path d="M100 58C100 58 88 75 88 90c0 8 5 13 12 13s12-5 12-13C112 75 100 58 100 58z" fill="#F0C078" opacity="0.55"/>
+  <path d="M60 55C60 55 50 80 55 100c4 15 15 22 25 18s14-18 10-33C86 70 60 55 60 55z" fill="#F0C078" opacity="0.1"/>
+  <path d="M140 55C140 55 150 80 145 100c-4 15-15 22-25 18s-14-18-10-33C114 70 140 55 140 55z" fill="#F0C078" opacity="0.1"/>
+  <path d="M70 115 Q100 135 130 115 Q115 145 100 150 Q85 145 70 115z" fill="#C5D1BC" opacity="0.15"/>
+  <circle cx="100" cy="25" r="3" fill="#F0C078" opacity="0.25"/>
+  <circle cx="45" cy="75" r="2.5" fill="#F0C078" opacity="0.15"/>
+  <circle cx="155" cy="75" r="2.5" fill="#F0C078" opacity="0.15"/>
+  <text x="100" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#F5EDE0" letter-spacing="3">YOUNGJAINS</text>
+</svg>
