@@ -1,12 +1,31 @@
 "use client";
-import React from "react";
-import { useInView, useCounter } from "@/hooks";
+import React, { useRef, useState, useEffect } from "react";
+import { useCounter } from "@/hooks";
+
+/* ─── Inline useInView to avoid TypeScript ref type issues ─── */
+function useInView(threshold = 0.12) {
+  const [visible, setVisible] = useState(false);
+  const divRef = useRef<HTMLDivElement>(null!);
+
+  useEffect(() => {
+    const el = divRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.unobserve(el); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+
+  return { ref: divRef, visible };
+}
 
 /* ─── Scroll Reveal ─── */
 export function Reveal({ children, delay = 0, className = "", style = {} }: {
   children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties;
 }) {
-  const [ref, visible] = useInView(0.1);
+  const { ref, visible } = useInView(0.1);
   return (
     <div ref={ref} className={className} style={{ ...style, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(40px)",
       transition: `opacity 0.9s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.9s cubic-bezier(.16,1,.3,1) ${delay}s` }}>{children}</div>
@@ -54,7 +73,7 @@ export function SectionHeader({ badge, title, subtitle, center = true }: {
 
 /* ─── Counter Card ─── */
 export function CounterCard({ end, label, suffix = "" }: { end: number; label: string; suffix?: string }) {
-  const [ref, visible] = useInView(0.3);
+  const { ref, visible } = useInView(0.3);
   const count = useCounter(end, 2200, visible);
   return (
     <div ref={ref} style={{ textAlign: "center", padding: "32px 16px", background: "rgba(255,255,255,0.04)", borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(10px)" }}>
