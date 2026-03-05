@@ -1,399 +1,381 @@
 "use client";
+import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { Reveal, SectionHeader, CounterCard } from "@/components/ui";
+import s from "@/styles/Home.module.css";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
-import { Reveal, CounterCard } from "@/components/ui";
-import { useScrolled } from "@/hooks";
-import { NAV_LINKS, PRINCIPLES, INVOLVED_ITEMS, CONTACT_ITEMS, MARQUEE_WORDS, FOOTER_GROUPS, HERO_SLIDES } from "@/lib/constants";
-import { scrollToSection, isDevanagari } from "@/lib/utils";
-import styles from "@/styles/Page.module.css";
+// Hero slides — community images
+const heroImages = [
+  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80",   // youth group
+  "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&q=80",   // meditation calm
+  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&q=80",   // volunteering seva
+  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80",   // youth facilitation
+];
+
+// Zigzag content blocks with images
+const zigzagBlocks = [
+  {
+    img: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    alt: "Youth studying Agam Vachan in a circle",
+    title: "Agam Vachan Circles",
+    desc: "Young seekers sit together to read, discuss, and internalise the sacred Agam texts — transforming ancient scripture into living dialogue.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80",
+    alt: "Meditation in a calm hall",
+    title: "Meditation & Mindfulness",
+    desc: "Silent sessions in calm spaces where youth practise Jain meditation techniques — cultivating inner stillness, awareness, and self-reflection.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80",
+    alt: "Seva activity — food drive and eco activity",
+    title: "Seva in Action",
+    desc: "From food drives to eco-cleanups, our youth channel compassion into tangible impact — making Ahimsa a lived practice, not just a principle.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+    alt: "Young facilitators leading sessions",
+    title: "Youth-Led Sessions",
+    desc: "Young facilitators lead workshops, discussions, and learning circles — empowering peers to explore Jain wisdom in their own voice.",
+  },
+];
+
+// Comparison table data
+const comparisonRows = [
+  { trad: "Passive listening", turn: "Right vision, knowledge, and conduct align", yj: "Dialogue circles" },
+  { trad: "Information overload", turn: "Learning becomes living", yj: "Reflection & journaling" },
+  { trad: "Event-based spirituality", turn: "Shift in awareness", yj: "Real-life practices" },
+  { trad: "No life integration", turn: "Inner awakening", yj: "Seva in action" },
+  { trad: "Temporary inspiration", turn: "Discipline and clarity", yj: "Lasting transformation" },
+];
+
+// Process cards
+const processCards = [
+  { num: "01", title: "Samvaad", sub: "Dialogue", desc: "We don't speak to you — we sit with you.", color: "var(--navy)" },
+  { num: "02", title: "Manan", sub: "Reflection", desc: "Silence, journaling, and inner questioning.", color: "var(--red)" },
+  { num: "03", title: "Acharan", sub: "Application", desc: "Food choices, speech awareness, digital discipline.", color: "var(--navy)" },
+  { num: "04", title: "Parivartan", sub: "Transformation", desc: "Calmer mind. Kinder conduct. Clearer direction.", color: "var(--red)" },
+];
 
 export default function HomePage() {
-  const scrolled = useScrolled(50);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activePrinciple, setActivePrinciple] = useState(0);
+  const [slide, setSlide] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
-  const [carouselIndex, setCarouselIndex] = useState(0);
 
-  // Auto-advance carousel every 5 seconds
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    const t = setInterval(() => setSlide((p) => (p + 1) % heroImages.length), 5000);
+    return () => clearInterval(t);
   }, []);
 
   const handleMouse = useCallback((e: React.MouseEvent) => {
     setMousePos({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight });
   }, []);
 
-  const handleNav = (href: string) => {
-    setMenuOpen(false);
-    scrollToSection(href);
-  };
-
   return (
-    <div className={styles.page}>
-      {/* ═══ NAVIGATION ═══ */}
-      <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
-        <div className={styles.navInner}>
-          <div className={styles.navLogo} onClick={() => handleNav("home")}>
-            <Image
-              src="/assets/images/icons/logo.png"
-              alt="Young Jains"
-              width={180}
-              height={46}
-              className={`${styles.logoImg} ${scrolled ? "" : styles.logoWhite}`}
-              priority
-            />
-          </div>
-          <div className={styles.navLinks}>
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.label}
-                className={`${styles.navLink} ${scrolled ? styles.navLinkDark : ""}`}
-                onClick={() => handleNav(l.href)}
-              >
-                {l.label}
-              </button>
-            ))}
-            <button className={styles.joinBtn}>Join Us</button>
-          </div>
-          <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {menuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
-        </div>
-        {menuOpen && (
-          <div className={styles.mobileMenu}>
-            {NAV_LINKS.map((l) => (
-              <button key={l.label} className={styles.mobileLink} onClick={() => handleNav(l.href)}>{l.label}</button>
-            ))}
-            <button className={styles.joinBtn} style={{ alignSelf: "flex-start", marginTop: 8 }}>Join Us</button>
-          </div>
-        )}
-      </nav>
-
-      {/* ═══ HERO WITH BACKGROUND CAROUSEL ═══ */}
-      <section
-        id="home"
-        className={styles.hero}
-        onMouseMove={handleMouse}
-      >
-        {/* ── Background Carousel ── */}
-        <div className={styles.carouselWrap}>
-          {HERO_SLIDES.map((slide, i) => (
-            <div
-              key={i}
-              className={`${styles.carouselSlide} ${carouselIndex === i ? styles.carouselSlideActive : ""}`}
-              style={{ backgroundImage: `url(${slide.src})` }}
-              aria-hidden={carouselIndex !== i}
-            />
+    <>
+      {/* ═══════════════════════════════════════════════
+          HERO — Full-width carousel with overlay
+      ═══════════════════════════════════════════════ */}
+      <section onMouseMove={handleMouse} style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden", background: "#081445" }}>
+        {/* Carousel */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+          {heroImages.map((src, i) => (
+            <div key={i} style={{
+              position: "absolute", inset: 0, backgroundImage: `url(${src})`, backgroundSize: "cover", backgroundPosition: "center",
+              opacity: slide === i ? 1 : 0, transform: slide === i ? "scale(1)" : "scale(1.12)",
+              transition: "opacity 1.8s cubic-bezier(.4,0,.2,1), transform 10s cubic-bezier(.4,0,.2,1)",
+            }} />
           ))}
-          {/* Dark overlay on top of images */}
-          <div className={styles.carouselOverlay} />
-          {/* Animated gradient mesh on top of overlay */}
-          <div
-            className={styles.carouselGradient}
-            style={{
-              background: `
-                radial-gradient(ellipse 120% 80% at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(15,35,106,0.85) 0%, transparent 55%),
-                radial-gradient(ellipse 80% 100% at 85% 20%, rgba(253,24,16,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 60% at 15% 80%, rgba(26,52,148,0.18) 0%, transparent 50%)
-              `,
-            }}
-          />
+          <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(160deg, rgba(8,20,69,0.93) 0%, rgba(15,35,106,0.8) 35%, rgba(15,35,106,0.73) 60%, rgba(8,20,69,0.9) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, zIndex: 2, transition: "background 0.3s",
+            background: `radial-gradient(ellipse 120% 80% at ${mousePos.x*100}% ${mousePos.y*100}%, rgba(15,35,106,0.8) 0%, transparent 55%), radial-gradient(ellipse 80% 100% at 85% 20%, rgba(253,24,16,0.1) 0%, transparent 50%)` }} />
         </div>
 
-        {/* Floating shapes */}
-        <div className={`${styles.floatShape} ${styles.float1}`} style={{ top:"12%", right:"12%", width:120, height:120, borderRadius:24, border:"1.5px solid rgba(255,255,255,0.08)" }} />
-        <div className={`${styles.floatShape} ${styles.float2}`} style={{ top:"60%", right:"8%", width:80, height:80, borderRadius:"50%", border:"1.5px solid rgba(253,24,16,0.12)" }} />
-        <div className={`${styles.floatShape} ${styles.float3}`} style={{ bottom:"20%", left:"8%", width:60, height:60, borderRadius:16, background:"rgba(253,24,16,0.06)" }} />
-        <div className={styles.grain} />
-
-        {/* Carousel Indicators */}
-        <div className={styles.carouselDots}>
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              className={`${styles.carouselDot} ${carouselIndex === i ? styles.carouselDotActive : ""}`}
-              onClick={() => setCarouselIndex(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
+        {/* Dots */}
+        <div style={{ position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", gap: 8 }}>
+          {heroImages.map((_, i) => (
+            <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i+1}`} style={{
+              width: slide === i ? 40 : 10, height: 10, borderRadius: slide === i ? 5 : "50%",
+              background: slide === i ? "var(--red)" : "rgba(255,255,255,0.25)", border: "none", cursor: "pointer",
+              transition: "all 0.4s", padding: 0,
+            }} />
           ))}
         </div>
 
-        <div className={styles.heroContent}>
+        {/* Content */}
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "160px 40px 100px", width: "100%", position: "relative", zIndex: 5 }}>
+          {/* Sanskrit header */}
           <Reveal>
-            <div className={styles.heroBadge}>
-              <span className={styles.heroBadgeDot} />
-              <span>THE YOUNG SPIRIT OF JAIN DHARMA</span>
+            <div style={{ fontFamily: "var(--fd)", fontSize: 17, color: "rgba(255,255,255,0.4)", marginBottom: 32, letterSpacing: 1 }}>
+              संघे शक्ति: &nbsp;|&nbsp; धर्मे श्रद्धा &nbsp;|&nbsp; आत्मनो मोक्षः
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h1 className={styles.heroTitle}>
-              Where <span className={styles.heroTitleRed}>Ancient Wisdom</span>
-              <br />Meets <span className={styles.heroTitleBold}>Young Minds</span>
+            <h1 className={s.heroH1} style={{ fontFamily: "var(--fh)", fontSize: 64, fontWeight: 300, lineHeight: 1.08, color: "#fff", maxWidth: 780, letterSpacing: -2 }}>
+              <span style={{ fontWeight: 800, color: "var(--red-l)" }}>Ancient Wisdom.</span>{" "}
+              <span style={{ fontWeight: 800 }}>Young Energy.</span>
+              <br />
+              <span style={{ fontWeight: 300, fontSize: "0.75em", opacity: 0.85 }}>Living Jainism.</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className={styles.heroTagline}>
-              {["Learn", "Live", "Lead"].map((w, i) => (
-                <React.Fragment key={w}>
-                  {i > 0 && <span className={styles.taglineLine} />}
-                  <span>{w}</span>
-                </React.Fragment>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <p className={styles.heroDesc}>
-              Jainism is rooted in non-violence, mindfulness, and compassion — teaching that every soul is pure and capable of attaining Moksha through responsible and conscious living.
+          <Reveal delay={0.25}>
+            <p style={{ fontFamily: "var(--fb)", fontSize: 18, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", maxWidth: 560, marginTop: 28 }}>
+              A space where Jain philosophy is not only studied — it is <strong style={{ color: "rgba(255,255,255,0.8)" }}>experienced, practised, and shared</strong> by youth shaping a compassionate future.
             </p>
           </Reveal>
 
           <Reveal delay={0.4}>
-            <div className={styles.heroActions}>
-              <button className={`${styles.btnGlow} ${styles.btnPrimary}`}>Join Our Community →</button>
-              <button className={`${styles.btnGlow} ${styles.btnOutline}`} onClick={() => handleNav("about")}>Explore More</button>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.55}>
-            <div className={styles.heroVerse}>
-              <div className={styles.verseDevanagari}>अहिंसा परमोधर्मः &nbsp;|&nbsp; आत्मज्ञानं मोक्षमार्गः</div>
-              <p className={styles.verseEnglish}>Non-violence is the supreme religion · Self-Knowledge is the path to salvation</p>
-            </div>
+            <Link href="/education" style={{
+              display: "inline-flex", alignItems: "center", gap: 10, marginTop: 40,
+              fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16, background: "var(--red)", color: "#fff",
+              padding: "18px 40px", borderRadius: 12, transition: "all 0.4s", textDecoration: "none",
+            }}>
+              Experience the Jain Living →
+            </Link>
           </Reveal>
         </div>
 
-        <div className={styles.heroFade} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 100, background: "linear-gradient(to top, var(--snow), transparent)", zIndex: 6 }} />
       </section>
 
-      {/* ═══ MARQUEE ═══ */}
-      <div className={styles.marquee}>
-        <div className={styles.marqueeTrack}>
-          {[0, 1].map((k) => (
-            <React.Fragment key={k}>
-              {MARQUEE_WORDS.map((w, i) => (
-                <span
-                  key={`${k}-${i}`}
-                  className={styles.marqueeWord}
-                  style={{
-                    fontFamily: isDevanagari(w) ? "var(--fd)" : "var(--fh)",
-                    color: i % 3 === 0 ? "var(--red-l)" : "rgba(255,255,255,0.3)",
-                  }}
-                >
-                  {w}
-                </span>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
-
-      {/* ═══ ABOUT ═══ */}
-      <section id="about" className={styles.section} style={{ background: "var(--snow)" }}>
-        <div className={styles.container}>
-          <div className={styles.aboutGrid}>
-            <div>
-              <Reveal>
-                <div className={styles.sectionBadge}>WHY YOUNGJAINS?</div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <h2 className={styles.sectionTitle}>
-                  A Space for <span className={styles.bold}>Growth</span>,<br />
-                  Rooted in <span className={styles.red}>Compassion</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <p className={styles.bodyText}>
-                  Because here, you connect with like-minded individuals, explore spiritual ideas in a relatable way, take part in activities that create a positive impact, and find a space where you can grow — personally, emotionally, and spiritually — while staying rooted in compassion and awareness.
-                </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <p className={styles.bodyText}>
-                  YoungJains helps young people understand and live these values in today&apos;s world by creating a supportive community focused on learning, self-growth, and service.
-                </p>
-              </Reveal>
-              <Reveal delay={0.4}>
-                <button className={`${styles.btnGlow} ${styles.btnNavy}`} style={{ marginTop: 32 }}>Learn More →</button>
-              </Reveal>
-            </div>
-            <div className={styles.statsGrid}>
-              {[
-                { num: "500+", label: "Active Members", bg: "var(--navy)", color: "#fff" },
-                { num: "50+", label: "Events Hosted", bg: "var(--red)", color: "#fff" },
-                { num: "20+", label: "Cities Reached", bg: "#EEF1F8", color: "var(--navy)" },
-                { num: "∞", label: "Compassion Shared", bg: "#FFF0F0", color: "var(--red)" },
-              ].map((c, i) => (
-                <Reveal key={i} delay={0.1 * i}>
-                  <div className={styles.statCard} style={{ background: c.bg, color: c.color }}>
-                    <div className={styles.statNum}>{c.num}</div>
-                    <div className={styles.statLabel}>{c.label}</div>
+      {/* ═══════════════════════════════════════════════
+          ZIGZAG — Photo + Content alternating
+      ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "100px 40px 60px", background: "var(--snow)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          {zigzagBlocks.map((block, i) => {
+            const isReverse = i % 2 !== 0;
+            return (
+              <Reveal key={i} delay={0.1}>
+                <div className={s.zigGrid} style={{
+                  display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center",
+                  marginBottom: 80, direction: isReverse ? "rtl" : "ltr",
+                }}>
+                  <div style={{ direction: "ltr" }}>
+                    <img src={block.img} alt={block.alt} className={s.zigImg} loading="lazy" />
                   </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
+                  <div style={{ direction: "ltr" }}>
+                    <div style={{ display: "inline-block", padding: "5px 14px", borderRadius: 8, background: i % 2 === 0 ? "rgba(15,35,106,0.06)" : "rgba(253,24,16,0.06)", marginBottom: 16 }}>
+                      <span style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: i % 2 === 0 ? "var(--navy)" : "var(--red)" }}>0{i + 1}</span>
+                    </div>
+                    <h3 style={{ fontFamily: "var(--fh)", fontSize: 32, fontWeight: 700, color: "var(--navy)", marginBottom: 14, letterSpacing: -0.5 }}>{block.title}</h3>
+                    <p style={{ fontFamily: "var(--fb)", fontSize: 16, lineHeight: 1.85, color: "var(--slate)" }}>{block.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
-      {/* ═══ PRINCIPLES ═══ */}
-      <section id="principles" className={styles.section} style={{ background: "var(--ice)" }}>
-        <div className={styles.container}>
+      {/* ═══════════════════════════════════════════════
+          WHAT IS YOUNGJAINS
+      ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "100px 40px", background: "var(--ice)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 56 }}>
-              <div className={styles.sectionBadge} style={{ margin: "0 auto 16px" }}>LIVING OUR VALUES</div>
-              <h2 className={styles.sectionTitle} style={{ textAlign: "center" }}>
-                The Five <span className={styles.red}>Principles</span>
+            <div style={{ textAlign: "center", marginBottom: 16 }}>
+              <div style={{ fontFamily: "var(--fd)", fontSize: 18, color: "var(--navy)", opacity: 0.3 }}>
+                सम्यग्दर्शनज्ञानचारित्राणि मोक्षमार्गः
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div style={{ display: "inline-block", padding: "6px 14px", borderRadius: 8, background: "rgba(253,24,16,0.08)", marginBottom: 16 }}>
+                <span style={{ fontFamily: "var(--fb)", fontSize: 12, fontWeight: 700, color: "var(--red)", letterSpacing: 2 }}>WHAT IS YOUNGJAINS?</span>
+              </div>
+              <h2 style={{ fontFamily: "var(--fh)", fontSize: 42, fontWeight: 300, color: "var(--navy)", letterSpacing: -1.5 }}>
+                When Learning Becomes <span style={{ fontWeight: 800, color: "var(--red)" }}>Living</span>
               </h2>
-              <p className={styles.bodyText} style={{ textAlign: "center", maxWidth: 480, margin: "12px auto 0" }}>
-                How we practise as YoungJains — turning ancient wisdom into daily action
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--fb)", fontSize: 17, lineHeight: 1.9, color: "var(--slate)" }}>
+                YoungJains is a youth-led learning and seva ecosystem designed for the modern seeker. We translate the depth of Jain Agamas into conversations, circles, and actions that fit today&apos;s world — from classrooms to careers.
+              </p>
+              <p style={{ fontFamily: "var(--fb)", fontSize: 17, lineHeight: 1.9, color: "var(--slate)", marginTop: 20 }}>
+                Here, spirituality is not separate from life. It becomes the way we <strong style={{ color: "var(--navy)" }}>think, speak, consume, create, and serve.</strong>
               </p>
             </div>
           </Reveal>
 
-          <div className={styles.principlesLayout}>
-            <div className={styles.principlesList}>
-              {PRINCIPLES.map((p, i) => (
-                <Reveal key={p.name} delay={i * 0.08}>
-                  <div
-                    className={`${styles.principlePill} ${activePrinciple === i ? styles.principlePillActive : ""}`}
-                    onClick={() => setActivePrinciple(i)}
-                  >
-                    <span className={styles.principleIcon}>{p.icon}</span>
-                    <div>
-                      <div className={styles.principleName}>{p.name}</div>
-                      <div className={styles.principleSub}>{p.sub}</div>
-                    </div>
-                  </div>
-                </Reveal>
+          {/* Mantra Flow */}
+          <Reveal delay={0.25}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginTop: 48, flexWrap: "wrap" }}>
+              {["Agam", "Dialogue", "Reflection", "Action", "Seva"].map((step, i) => (
+                <React.Fragment key={step}>
+                  {i > 0 && <span style={{ fontFamily: "var(--fh)", fontSize: 20, color: "var(--red)", opacity: 0.4 }}>→</span>}
+                  <div style={{
+                    padding: "10px 22px", borderRadius: 12, fontFamily: "var(--fb)", fontSize: 14, fontWeight: 700,
+                    background: i === 0 || i === 4 ? "var(--navy)" : "#fff",
+                    color: i === 0 || i === 4 ? "#fff" : "var(--navy)",
+                    border: `1.5px solid ${i === 0 || i === 4 ? "var(--navy)" : "rgba(15,35,106,0.1)"}`,
+                    letterSpacing: 0.5,
+                  }}>{step}</div>
+                </React.Fragment>
               ))}
             </div>
-
-            <Reveal delay={0.2} className={styles.principleDetail}>
-              <div className={styles.principleCard}>
-                <div className={styles.principleCardNum}>PRINCIPLE 0{activePrinciple + 1}</div>
-                <h3 className={styles.principleCardTitle}>{PRINCIPLES[activePrinciple].name}</h3>
-                <div className={styles.principleCardSub}>{PRINCIPLES[activePrinciple].sub}</div>
-                <p className={styles.principleCardDesc}>{PRINCIPLES[activePrinciple].desc}</p>
-                <div className={styles.principleCardVerse}>धर्मे स्थिरता | सेवया आत्मशुद्धिः | ज्ञानेन मोक्षः</div>
-              </div>
-            </Reveal>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ═══ GET INVOLVED ═══ */}
-      <section id="get-involved" className={styles.section} style={{ background: "var(--snow)" }}>
-        <div className={styles.container}>
+      {/* ═══════════════════════════════════════════════
+          COMPARISON TABLE
+      ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "100px 40px", background: "var(--snow)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 56 }}>
-              <div className={styles.sectionBadge} style={{ margin: "0 auto 16px" }}>FOR EVERYONE WHO BELIEVES IN KINDNESS</div>
-              <h2 className={styles.sectionTitle} style={{ textAlign: "center" }}>
-                Get <span className={styles.bold}>Involved</span>
+            <div style={{ textAlign: "center", marginBottom: 12 }}>
+              <div style={{ display: "inline-block", padding: "6px 14px", borderRadius: 8, background: "rgba(253,24,16,0.08)", marginBottom: 16 }}>
+                <span style={{ fontFamily: "var(--fb)", fontSize: 12, fontWeight: 700, color: "var(--red)", letterSpacing: 2 }}>THE DIFFERENCE</span>
+              </div>
+              <h2 style={{ fontFamily: "var(--fh)", fontSize: 42, fontWeight: 300, color: "var(--navy)", letterSpacing: -1.5 }}>
+                Why YoungJains Feels <span style={{ fontWeight: 800, color: "var(--red)" }}>Different</span>
+              </h2>
+              <p style={{ fontFamily: "var(--fb)", fontSize: 15, color: "var(--slate)", marginTop: 10 }}>
+                We move from passive listening to conscious living.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className={s.tableWrap}>
+              <table className={s.compTable}>
+                <thead>
+                  <tr>
+                    <th>Traditional Model</th>
+                    <th style={{ background: "var(--navy-l)" }}>Turning Point</th>
+                    <th style={{ background: "var(--red)" }}>YoungJains Experience</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row, i) => (
+                    <tr key={i}>
+                      <td>{row.trad}</td>
+                      <td>{row.turn}</td>
+                      <td>{row.yj}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          PROCESS CARDS
+      ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "100px 40px", background: "var(--ice)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <Reveal>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <h2 style={{ fontFamily: "var(--fh)", fontSize: 38, fontWeight: 300, color: "var(--navy)", letterSpacing: -1 }}>
+                A Journey from Dialogue to <span style={{ fontWeight: 800 }}>Inner Transformation</span>
               </h2>
             </div>
           </Reveal>
-          <div className={styles.bentoGrid}>
-            {INVOLVED_ITEMS.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.1}>
-                <div className={styles.bentoCard}>
-                  <div className={styles.bentoTag} style={{
-                    background: i % 2 === 0 ? "rgba(15,35,106,0.06)" : "rgba(253,24,16,0.06)",
-                    color: i % 2 === 0 ? "var(--navy)" : "var(--red)",
-                  }}>{item.tag}</div>
-                  <h3 className={styles.bentoTitle}>{item.title}</h3>
-                  <p className={styles.bentoDesc}>{item.desc}</p>
+
+          <div className={s.processGrid}>
+            {processCards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.1}>
+                <div className={s.processCard} style={{ borderLeftColor: card.color }}>
+                  <div style={{ position: "absolute", top: 0, left: 0, width: 4, height: "100%", background: card.color, borderRadius: "20px 0 0 20px" }} />
+                  <div style={{ fontFamily: "var(--fb)", fontSize: 12, fontWeight: 700, color: card.color, letterSpacing: 2, marginBottom: 8 }}>{card.num}</div>
+                  <h3 style={{ fontFamily: "var(--fh)", fontSize: 26, fontWeight: 800, color: "var(--navy)", marginBottom: 2 }}>{card.title}</h3>
+                  <div style={{ fontFamily: "var(--fb)", fontSize: 12, fontWeight: 600, color: "var(--slate)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>{card.sub}</div>
+                  <p style={{ fontFamily: "var(--fb)", fontSize: 15, lineHeight: 1.75, color: "var(--slate)" }}>{card.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.3}>
+            <div style={{ textAlign: "center", marginTop: 48 }}>
+              <Link href="/education" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15, background: "var(--navy)", color: "#fff",
+                padding: "16px 36px", borderRadius: 12, transition: "all 0.4s", textDecoration: "none",
+              }}>
+                Explore Learning →
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className={`${styles.cta} ${styles.grain}`}>
-        <div className={styles.ctaGrid} />
-        <div className={styles.ctaGlow1} />
-        <div className={styles.ctaGlow2} />
-        <div className={styles.ctaInner}>
+      {/* ═══════════════════════════════════════════════
+          FINAL CTA
+      ═══════════════════════════════════════════════ */}
+      <section style={{
+        padding: "120px 40px", textAlign: "center", position: "relative", overflow: "hidden",
+        background: "linear-gradient(135deg, #081445 0%, var(--navy) 40%, #1A3494 80%, #142B7A 100%)",
+      }}>
+        {/* Dot grid */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+        {/* Glow */}
+        <div style={{ position: "absolute", top: "-15%", right: "5%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(253,24,16,0.08) 0%, transparent 60%)", filter: "blur(60px)" }} />
+
+        <div style={{ maxWidth: 800, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <Reveal>
-            <div style={{ fontFamily: "var(--fd)", fontSize: 20, color: "rgba(255,255,255,0.3)" }}>आत्मनो मोक्षार्थम् जगद्धिताय च</div>
+            <div style={{ fontFamily: "var(--fd)", fontSize: 22, color: "rgba(255,255,255,0.35)", marginBottom: 28, fontWeight: 500 }}>
+              परस्परोपग्रहो जीवानाम्
+            </div>
           </Reveal>
+
           <Reveal delay={0.1}>
-            <h2 className={styles.ctaTitle}>
-              Be Part of a<br /><span className={styles.ctaTitleAccent}>Movement That Matters</span>
+            <h2 style={{ fontFamily: "var(--fh)", fontSize: 44, fontWeight: 300, color: "#fff", lineHeight: 1.2, letterSpacing: -1.5 }}>
+              Your journey is not about<br />becoming a scholar.
+              <br />
+              <span style={{ fontWeight: 800, color: "var(--red-l)" }}>It is about becoming aware.</span>
             </h2>
           </Reveal>
+
           <Reveal delay={0.2}>
-            <p className={styles.ctaBody}>Join a community of young people dedicated to living with compassion, awareness, and purpose.</p>
+            <p style={{ fontFamily: "var(--fb)", fontSize: 18, color: "rgba(255,255,255,0.45)", marginTop: 24, lineHeight: 1.8 }}>
+              Step into a space where learning becomes living.
+            </p>
           </Reveal>
+
+          {/* Stats */}
           <Reveal delay={0.3}>
-            <div className={styles.ctaStats}>
+            <div className={s.statsCtaGrid}>
               <CounterCard end={500} suffix="+" label="Members" />
               <CounterCard end={50} suffix="+" label="Events" />
               <CounterCard end={20} suffix="+" label="Cities" />
               <CounterCard end={10} suffix="+" label="Years" />
             </div>
           </Reveal>
+
           <Reveal delay={0.4}>
-            <button className={`${styles.btnGlow} ${styles.btnPrimary}`} style={{ marginTop: 40, fontSize: 16, padding: "18px 44px" }}>Join YoungJains Today →</button>
+            <Link href="/volunteer" style={{
+              display: "inline-flex", alignItems: "center", gap: 10, marginTop: 48,
+              fontFamily: "var(--fb)", fontWeight: 700, fontSize: 17, background: "var(--red)", color: "#fff",
+              padding: "20px 48px", borderRadius: 14, transition: "all 0.4s", textDecoration: "none",
+            }}>
+              Begin Your Journey →
+            </Link>
           </Reveal>
-        </div>
-      </section>
 
-      {/* ═══ CONTACT ═══ */}
-      <section id="contact" className={styles.section} style={{ background: "var(--snow)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <div className={styles.sectionBadge} style={{ margin: "0 auto 16px" }}>REACH OUT</div>
-            <h2 className={styles.sectionTitle} style={{ textAlign: "center" }}>
-              Let&apos;s <span className={styles.bold}>Connect</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className={styles.contactGrid}>
-              {CONTACT_ITEMS.map((c) => (
-                <div key={c.label} className={styles.bentoCard} style={{ textAlign: "center", padding: "36px 24px" }}>
-                  <div style={{ fontSize: 28, marginBottom: 12 }}>{c.icon}</div>
-                  <div className={styles.bentoTag} style={{ background: "rgba(253,24,16,0.06)", color: "var(--red)", margin: "0 auto 8px" }}>{c.label}</div>
-                  <div style={{ fontFamily: "var(--fh)", fontSize: 16, fontWeight: 600, color: "var(--navy)" }}>{c.value}</div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══ FOOTER ═══ */}
-      <footer className={styles.footer}>
-        <div className={styles.container}>
-          <div className={styles.footerGrid}>
-            <div>
-              <Image src="/assets/images/icons/logo.png" alt="Young Jains" width={150} height={40} className={styles.footerLogo} />
-              <p className={styles.footerDesc}>Empowering the next generation to live with compassion, awareness, and purpose through Jain Dharma.</p>
-            </div>
-            {FOOTER_GROUPS.map((g) => (
-              <div key={g.title}>
-                <div className={styles.footerGroupTitle}>{g.title}</div>
-                {g.links.map((l) => (
-                  <div key={l} className={styles.footerLink}>{l}</div>
-                ))}
+          {/* Tagline */}
+          <Reveal delay={0.5}>
+            <div style={{ marginTop: 56, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <div style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>
+                YoungJains
               </div>
-            ))}
-          </div>
-          <div className={styles.footerBottom}>
-            <div>© 2026 Young Jains Community. All Rights Reserved.</div>
-            <div className={styles.footerLegal}><span>Terms</span><span>Privacy</span></div>
-          </div>
+              <div style={{ fontFamily: "var(--fb)", fontSize: 14, color: "rgba(255,255,255,0.3)", marginTop: 10, lineHeight: 1.8 }}>
+                Preserving Wisdom. Empowering Youth.
+                <br />
+                Live Consciously. Act Responsibly. Evolve Continuously.
+              </div>
+            </div>
+          </Reveal>
         </div>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }

@@ -1,0 +1,146 @@
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.zigImg {
+  border-radius: 20px;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
+}
+
+.zigImg:hover {
+  transform: scale(1.03);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin-top: 40px;
+}
+
+.compTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--fb);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(15, 35, 106, 0.06);
+}
+
+.compTable th {
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.compTable td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--slate);
+  border-bottom: 1px solid var(--ice);
+  line-height: 1.6;
+}
+
+.compTable tr:nth-child(even) td {
+  background: rgba(238, 241, 248, 0.5);
+}
+
+.compTable tr:last-child td {
+  border-bottom: none;
+}
+
+.compTable td:nth-child(2) {
+  color: var(--navy);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.compTable td:nth-child(3) {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.processCard {
+  background: #fff;
+  border: 1.5px solid rgba(15, 35, 106, 0.06);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: all 0.5s cubic-bezier(.16, 1, .3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.processCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(15, 35, 106, 0.08);
+  border-color: rgba(15, 35, 106, 0.1);
+}
+
+.zigGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.statsCtaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 52px;
+}
+
+.heroH1 {
+  font-family: var(--fh);
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1.08;
+  color: #fff;
+  max-width: 780px;
+  letter-spacing: -2px;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 60px;
+  animation: marquee 25s linear infinite;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .zigGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .statsCtaGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .heroH1 {
+    font-size: 38px !important;
+  }
+}
