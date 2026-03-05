@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Reveal, SectionHeader, CounterCard } from "@/components/ui";
+import { MARQUEE_WORDS } from "@/lib/constants";
+import { isDevanagari } from "@/lib/utils";
 import s from "@/styles/Home.module.css";
 
 // Hero slides — community images
@@ -135,9 +137,22 @@ export default function HomePage() {
             </Link>
           </Reveal>
         </div>
-
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 100, background: "linear-gradient(to top, var(--snow), transparent)", zIndex: 6 }} />
       </section>
+
+      {/* ═══ MARQUEE STRIP ═══ */}
+      <div style={{ background: "var(--navy)", padding: "22px 0", overflow: "hidden", position: "relative", zIndex: 4, marginTop: 20 }}>
+        <div className={s.marqueeTrack}>
+          {[0, 1].map((k) =>
+            MARQUEE_WORDS.map((w, i) => (
+              <span key={`${k}-${i}`} style={{
+                fontFamily: isDevanagari(w) ? "var(--fd)" : "var(--fh)",
+                fontSize: 16, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase",
+                color: i % 3 === 0 ? "var(--red-l)" : "rgba(255,255,255,0.3)",
+              }}>{w}</span>
+            ))
+          )}
+        </div>
+      </div>
 
       {/* ═══════════════════════════════════════════════
           ZIGZAG — Photo + Content alternating

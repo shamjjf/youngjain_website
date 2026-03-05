@@ -1,34 +1,14 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 
-export function useInView(threshold = 0.12): [(node: HTMLDivElement | null) => void, boolean] {
+export function useInView(threshold = 0.12): [React.RefObject<HTMLDivElement | null>, boolean] {
+  const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
-  const nodeRef = useRef<HTMLDivElement | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  const ref = (node: HTMLDivElement | null) => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-      observerRef.current = null;
-    }
-
-    if (node && !visible) {
-      const obs = new IntersectionObserver(
-        ([e]) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            obs.unobserve(node);
-          }
-        },
-        { threshold }
-      );
-      obs.observe(node);
-      observerRef.current = obs;
-    }
-
-    nodeRef.current = node;
-  };
-
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.unobserve(el); } }, { threshold });
+    obs.observe(el); return () => obs.disconnect();
+  }, [threshold]);
   return [ref, visible];
 }
 
