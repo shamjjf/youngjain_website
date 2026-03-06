@@ -123,7 +123,7 @@ export default function HomePage() {
 
           <Reveal delay={0.25}>
             <p style={{ fontFamily: "var(--fb)", fontSize: 18, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", maxWidth: 560, marginTop: 28 }}>
-              A space where Jain philosophy is not only studied — it is <strong style={{ color: "rgba(255,255,255,0.8)" }}>experienced, practised, and shared</strong> by youth shaping a compassionate future.
+              A space where Jain philosophy is not only studied. it is <strong style={{ color: "rgba(255,255,255,0.8)" }}>experienced, practised, and shared</strong> by youth shaping a compassionate future.
             </p>
           </Reveal>
 
