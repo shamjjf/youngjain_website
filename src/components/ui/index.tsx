@@ -14,13 +14,12 @@ export function Reveal({
   className?: string;
   style?: React.CSSProperties;
 }) {
+
   const [ref, visible] = useInView(0.1);
 
   return (
     <div
-      ref={(el) => {
-        if (ref) ref.current = el;
-      }}
+      ref={ref}
       className={className}
       style={{
         ...style,
@@ -65,6 +64,7 @@ export function PageHero({
           backgroundSize: "32px 32px",
         }}
       />
+
       <div
         style={{
           position: "absolute",
@@ -223,14 +223,13 @@ export function CounterCard({
   label: string;
   suffix?: string;
 }) {
+
   const [ref, visible] = useInView(0.3);
   const count = useCounter(end, 2200, visible);
 
   return (
     <div
-      ref={(el) => {
-        if (ref) ref.current = el;
-      }}
+      ref={ref}
       style={{
         textAlign: "center",
         padding: "32px 16px",
@@ -283,11 +282,16 @@ export function BentoCard({
   tagColor?: "navy" | "red";
   children?: React.ReactNode;
 }) {
+
   const bg =
     tagColor === "red"
       ? "rgba(253,24,16,0.06)"
       : "rgba(15,35,106,0.06)";
-  const clr = tagColor === "red" ? "var(--red)" : "var(--navy)";
+
+  const clr =
+    tagColor === "red"
+      ? "var(--red)"
+      : "var(--navy)";
 
   return (
     <div
@@ -311,6 +315,7 @@ export function BentoCard({
         e.currentTarget.style.boxShadow = "none";
       }}
     >
+
       {tag && (
         <div
           style={{
@@ -356,6 +361,7 @@ export function BentoCard({
       )}
 
       {children}
+
     </div>
   );
 }
@@ -366,6 +372,7 @@ export function PlaceholderGrid({
 }: {
   items: { title: string; desc: string; icon: string }[];
 }) {
+
   return (
     <div
       style={{
