@@ -9,7 +9,7 @@ export default function EducationPage() {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:20}}>
           {[
             {t:"Agam Vachan",d:"Study the sacred Jain Agam texts — the authentic words of Tirthankaras preserved through oral tradition.",href:"/education/agam-vachan",i:"📜"},
-            {t:"Paathshala",d:"Structured religious education classes for youth covering Jain history, ethics, rituals, and philosophy.",href:"/education/paathshala",i:"🏫"},
+            // {t:"Paathshala",d:"Structured religious education classes for youth covering Jain history, ethics, rituals, and philosophy.",href:"/education/paathshala",i:"🏫"},
             {t:"Swadhyay",d:"Self-study and group discussion sessions to deepen understanding of Jain scriptures and their modern relevance.",href:"/education/swadhyay",i:"📖"},
             {t:"Chaturmas",d:"Special programs during the holy Chaturmas period — a time of heightened spiritual practice and learning.",href:"/education/chaturmas",i:"🙏"},
           ].map((item,i)=>(

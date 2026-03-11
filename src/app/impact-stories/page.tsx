@@ -9,7 +9,7 @@ export default function ImpactPage() {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:20}}>
           {[
             {t:"Awards",d:"Recognition and honours our community has received over the years.",href:"/impact-stories/awards",i:"🏆"},
-            {t:"Achievements",d:"Milestones, numbers, and accomplishments we're proud of.",href:"/impact-stories/achievements",i:"📈"},
+            // {t:"Achievements",d:"Milestones, numbers, and accomplishments we're proud of.",href:"/impact-stories/achievements",i:"📈"},
             {t:"Testimonials",d:"Hear from members about how YoungJains impacted their lives.",href:"/impact-stories/testimonials",i:"💬"},
             {t:"Photos & Videos",d:"Relive our best moments through our media gallery.",href:"/impact-stories/photos-videos",i:"📸"},
           ].map((item,i)=>(

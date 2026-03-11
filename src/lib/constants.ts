@@ -17,7 +17,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/impact-stories",
     children: [
       { label: "Awards", href: "/impact-stories/awards" },
-      { label: "Achievements", href: "/impact-stories/achievements" },
+      // { label: "Achievements", href: "/impact-stories/achievements" },
       { label: "Testimonials", href: "/impact-stories/testimonials" },
       { label: "Photos & Videos", href: "/impact-stories/photos-videos" },
     ],
@@ -27,7 +27,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/education",
     children: [
       { label: "Agam Vachan", href: "/education/agam-vachan" },
-      { label: "Paathshala", href: "/education/paathshala" },
+      // { label: "Paathshala", href: "/education/paathshala" },
       { label: "Swadhyay", href: "/education/swadhyay" },
       { label: "Chaturmas", href: "/education/chaturmas" },
     ],
