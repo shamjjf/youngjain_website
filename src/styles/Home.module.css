@@ -130,6 +130,12 @@
 @media (max-width: 900px) {
   .zigGrid {
     grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .zigImg {
+    height: 260px !important;
   }
 
   .processGrid {
@@ -141,6 +147,41 @@
   }
 
   .heroH1 {
-    font-size: 38px !important;
+    font-size: 36px !important;
+    letter-spacing: -1px !important;
+  }
+
+  .compTable th,
+  .compTable td {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .processCard {
+    padding: 24px 20px !important;
+  }
+
+  .marqueeTrack {
+    gap: 36px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroH1 {
+    font-size: 28px !important;
+  }
+
+  .zigImg {
+    height: 200px !important;
+  }
+
+  .statsCtaGrid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .zigGrid {
+    gap: 16px !important;
+    margin-bottom: 32px !important;
   }
 }

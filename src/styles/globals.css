@@ -16,3 +16,6 @@ img{max-width:100%;display:block}
 ::-webkit-scrollbar-track{background:var(--snow)}
 ::-webkit-scrollbar-thumb{background:rgba(15,35,106,0.2);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--navy)}
+
+/* Responsive overrides — must be last */
+@import './responsive.css';

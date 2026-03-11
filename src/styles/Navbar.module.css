@@ -92,3 +92,14 @@
   .desktopNav { display: none; }
   .burger { display: block !important; }
 }
+
+@media (max-width: 768px) {
+  .inner { padding: 0 16px; }
+  .logo { width: 140px; height: 36px; }
+  .logoImg { height: 36px !important; }
+  .mobile { padding: 16px 16px 24px; max-height: 80vh; overflow-y: auto; }
+  .mobileLink { font-size: 15px; padding: 12px 0; }
+  .mobileSub { padding: 2px 0 6px 12px; }
+  .mobileSubLink { font-size: 13px; padding: 8px 0; }
+  .joinBtn { width: 100%; text-align: center; padding: 12px 20px; }
+}

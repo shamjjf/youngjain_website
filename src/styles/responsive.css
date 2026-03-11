@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   Fixes all inline-style responsive issues across the site.
+   Import this in globals.css AFTER the base styles.
+═══════════════════════════════════════════════════════════ */
+
+/* ─── TABLET (max-width: 1024px) ─── */
+@media (max-width: 1024px) {
+
+  /* ── Global section padding ── */
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ── All 2-column grids → 1 column ── */
+  section > div > div[style*="grid-template-columns: 1.2fr"],
+  section > div > div[style*="grid-template-columns: 1fr 1fr"],
+  section > div > div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Navbar ── */
+  nav > div {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* ── Hero section ── */
+  section:first-of-type > div:last-of-type {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ── Large headings scale down ── */
+  h1 {
+    font-size: clamp(32px, 6vw, 64px) !important;
+    letter-spacing: -1px !important;
+  }
+
+  h2 {
+    font-size: clamp(28px, 5vw, 48px) !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  /* ── Footer grid ── */
+  footer > div > div:first-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* ─── MOBILE (max-width: 768px) ─── */
+@media (max-width: 768px) {
+
+  /* ── Global section padding ── */
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* ── Container max-width override ── */
+  section > div[style*="max-width"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* ── Hero section special padding ── */
+  section:first-of-type {
+    min-height: 90vh !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  section:first-of-type > div[style*="padding: 160px"],
+  section:first-of-type > div[style*="padding:160px"] {
+    padding: 110px 16px 60px !important;
+  }
+
+  /* ── ALL grids → single column on mobile ── */
+  div[style*="grid-template-columns: 1.2fr"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns: repeat(auto-fill"],
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="grid-template-columns: repeat(3"],
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Stats grids → 2 columns ── */
+  div[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* ── Headings responsive ── */
+  h1 {
+    font-size: 32px !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1.15 !important;
+  }
+
+  h2 {
+    font-size: 26px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+
+  /* ── Body text ── */
+  p {
+    font-size: 15px !important;
+  }
+
+  /* ── PageHero banner ── */
+  section[style*="padding: 160px 40px 80px"],
+  section[style*="padding:160px 40px 80px"] {
+    padding: 120px 16px 48px !important;
+    min-height: auto !important;
+  }
+
+  section[style*="padding: 160px 40px 80px"] h1,
+  section[style*="padding:160px 40px 80px"] h1 {
+    font-size: 30px !important;
+  }
+
+  /* ── Buttons responsive ── */
+  a[style*="padding: 18px 40px"],
+  a[style*="padding:18px 40px"],
+  a[style*="padding: 16px 36px"],
+  a[style*="padding:16px 36px"],
+  a[style*="padding: 20px 48px"],
+  a[style*="padding:20px 48px"] {
+    padding: 14px 24px !important;
+    font-size: 14px !important;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* ── Button flex rows → stack ── */
+  div[style*="display: flex"][style*="gap: 14px"],
+  div[style*="display:flex"][style*="gap:14px"],
+  div[style*="display: flex"][style*="gap: 16px"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* ── Zigzag images ── */
+  img[style*="height: 400px"],
+  img[style*="height:400px"],
+  img[style*="height: 360px"],
+  img[style*="height:360px"] {
+    height: 240px !important;
+  }
+
+  /* ── Marquee strip ── */
+  div[style*="padding: 22px 0"],
+  div[style*="padding:22px 0"],
+  div[style*="padding: 14px 0"],
+  div[style*="padding:14px 0"] {
+    padding: 12px 0 !important;
+    margin-top: 0 !important;
+  }
+
+  div[style*="padding: 22px 0"] span,
+  div[style*="padding:22px 0"] span {
+    font-size: 12px !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* ── Mantra flow pills ── */
+  div[style*="display: flex"][style*="justify-content: center"][style*="gap: 12px"] {
+    gap: 8px !important;
+  }
+
+  div[style*="display: flex"][style*="justify-content: center"][style*="gap: 12px"] > div {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+
+  /* ── Table responsive ── */
+  table {
+    font-size: 12px !important;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table th,
+  table td {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  /* ── Process cards ── */
+  div[style*="border-radius: 20px"][style*="padding: 36px 28px"] {
+    padding: 24px 20px !important;
+  }
+
+  /* ── Award cards ── */
+  div[style*="border-radius: 20px"][style*="padding: 28px 28px"],
+  div[style*="padding: 36px 32px"] {
+    padding: 24px 18px !important;
+  }
+
+  /* ── Gallery grid ── */
+  div[style*="grid-auto-rows: 180px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: 150px !important;
+  }
+
+  /* ── Journey timeline ── */
+  div[style*="grid-template-columns: 80px 1fr"] {
+    grid-template-columns: 52px 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* ── Lightbox ── */
+  div[style*="z-index: 9999"] img {
+    max-width: 95vw !important;
+    max-height: 70vh !important;
+    border-radius: 12px !important;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 40px 16px 28px !important;
+  }
+
+  footer > div > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    text-align: center !important;
+  }
+
+  footer img {
+    margin: 0 auto 12px !important;
+  }
+
+  footer > div > div:last-child {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+
+  /* ── Comparison table section header ── */
+  div[style*="margin-bottom: 56px"] {
+    margin-bottom: 32px !important;
+  }
+
+  /* ── Card border-radius consistency ── */
+  div[style*="border-radius: 24px"] {
+    border-radius: 16px !important;
+  }
+
+  /* ── Quote block ── */
+  div[style*="border-left: 4px solid"] {
+    padding: 14px 18px !important;
+    margin: 20px 0 !important;
+  }
+
+  /* ── About page philosophy split ── */
+  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 48px"] {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* ── Jewels / 3-column grids ── */
+  div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Provides list items ── */
+  div[style*="display: flex"][style*="gap: 16px"][style*="padding: 20px 0"] {
+    gap: 12px !important;
+    padding: 14px 0 !important;
+  }
+
+  /* ── Testimonial cards ── */
+  div[style*="grid-template-columns: 1fr 1fr 1fr"][style*="gap: 20px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Skill tags ── */
+  span[style*="border-radius: 20px"][style*="padding: 4px 12px"] {
+    font-size: 10px !important;
+  }
+
+  /* ── Carousel dots ── */
+  div[style*="bottom: 36px"] {
+    bottom: 20px !important;
+  }
+}
+
+/* ─── SMALL MOBILE (max-width: 480px) ─── */
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 26px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  /* ── Stats → single column ── */
+  div[style*="grid-template-columns: repeat(4, 1fr)"],
+  div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* ── Gallery → single column ── */
+  div[style*="grid-auto-rows"] {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 200px !important;
+  }
+
+  /* ── Counter cards ── */
+  div[style*="font-size: 48px"],
+  div[style*="font-size: 52px"],
+  div[style*="font-size: 40px"] {
+    font-size: 32px !important;
+  }
+
+  /* ── Navbar logo ── */
+  nav img[style*="height: 42px"],
+  nav img[style*="height:42px"] {
+    height: 32px !important;
+  }
+
+  /* ── Sanskrit text ── */
+  div[style*="font-size: 22px"][style*="font-family: var(--fd)"],
+  div[style*="font-size: 20px"][style*="font-family: var(--fd)"] {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── PRINT ─── */
+@media print {
+  nav, footer, div[style*="position: fixed"] {
+    display: none !important;
+  }
+
+  section {
+    padding: 20px !important;
+    break-inside: avoid;
+  }
+}

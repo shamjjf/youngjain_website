@@ -3,7 +3,14 @@ import type { NavItem } from "@/types";
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Volunteer", href: "/volunteer" },
+  {
+    label: "Volunteer",
+    href: "/volunteer",
+    children: [
+      { label: "Seva Pathways", href: "/volunteer/seva-pathways" },
+      { label: "Seva Journey", href: "/volunteer/seva-journey" },
+    ],
+  },
   { label: "Events", href: "/events" },
   {
     label: "Impact & Stories",
