@@ -6,25 +6,14 @@ import { useInView, useCounter } from "@/hooks";
 export function Reveal({ children, delay = 0, className = "", style = {} }: {
   children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties;
 }) {
-  const [ref, visible] = useInView(0.1);
-
+  const { ref, visible } = useInView(0.1);
   return (
-    <div
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className={className}
-      style={{
-        ...style,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-        transition: `opacity 0.9s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.9s cubic-bezier(.16,1,.3,1) ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
+    <div ref={ref} className={className} style={{ ...style, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(40px)",
+      transition: `opacity 0.9s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.9s cubic-bezier(.16,1,.3,1) ${delay}s` }}>{children}</div>
   );
 }
 
-/* ─── Page Hero Banner (reused on every inner page) ─── */
+/* ─── Page Hero Banner ─── */
 export function PageHero({ title, subtitle, badge }: { title: React.ReactNode; subtitle?: string; badge?: string }) {
   return (
     <section style={{
@@ -65,30 +54,17 @@ export function SectionHeader({ badge, title, subtitle, center = true }: {
 
 /* ─── Counter Card ─── */
 export function CounterCard({ end, label, suffix = "" }: { end: number; label: string; suffix?: string }) {
-  const [ref, visible] = useInView(0.3);
+  const { ref, visible } = useInView(0.3);
   const count = useCounter(end, 2200, visible);
   return (
-   <div
-  ref={(node) => {
-    if (ref && "current" in ref) {
-      (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-    }
-  }}
-  style={{
-    textAlign: "center",
-    padding: "32px 16px",
-    background: "rgba(255,255,255,0.04)",
-    borderRadius: 16,
-    border: "1px solid rgba(255,255,255,0.08)",
-    backdropFilter: "blur(10px)"
-  }}>
+    <div ref={ref} style={{ textAlign: "center", padding: "32px 16px", background: "rgba(255,255,255,0.04)", borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(10px)" }}>
       <div style={{ fontFamily: "var(--fh)", fontSize: 48, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{count}{suffix}</div>
       <div style={{ fontFamily: "var(--fb)", fontSize: 12, color: "rgba(255,255,255,0.5)", marginTop: 8, letterSpacing: 1, textTransform: "uppercase" }}>{label}</div>
     </div>
   );
 }
 
-/* ─── Card (Bento style) ─── */
+/* ─── Bento Card ─── */
 export function BentoCard({ tag, title, desc, tagColor = "navy", children }: {
   tag?: string; title: string; desc?: string; tagColor?: "navy" | "red"; children?: React.ReactNode;
 }) {
@@ -110,7 +86,7 @@ export function BentoCard({ tag, title, desc, tagColor = "navy", children }: {
   );
 }
 
-/* ─── Placeholder Card (for coming-soon content) ─── */
+/* ─── Placeholder Grid ─── */
 export function PlaceholderGrid({ items }: { items: { title: string; desc: string; icon: string }[] }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
