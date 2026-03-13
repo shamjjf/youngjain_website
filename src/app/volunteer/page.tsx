@@ -1,7 +1,8 @@
-"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+export const metadata = { title: "Volunteer" };
 
 const sevaValues = [
   "Practice kindness in action",
@@ -32,6 +33,7 @@ const whoCanVolunteer = [
     desc: "Assist in field work, food drives, cleanliness activities, or logistics. Intent matters most.",
   },
 ];
+
 
 export default function VolunteerPage() {
   return (

@@ -3,9 +3,12 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "@/styles/globals.css";
 
-export const metadata = {
-  title: "About Us",
-  description: "About Young Jains",
+export const metadata: Metadata = {
+  title: {
+    default: "Young Jains",
+    template: "%s | Young Jains",
+  },
+  description: "Young Jains community promoting Jain values, youth empowerment, and cultural education.",
 };
 
 export const viewport = {

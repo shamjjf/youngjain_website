@@ -1,7 +1,9 @@
-"use client";
+// "use client";
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+export const metadata = { title: "Volunteer || Seva Pathway" };
+
 
 const pathways = [
   {

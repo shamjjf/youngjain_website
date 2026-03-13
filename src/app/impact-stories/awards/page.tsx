@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
 
+
 // ─── Awards Data — replace images with your actual award photos ───
 const featuredAwards = [
   {
