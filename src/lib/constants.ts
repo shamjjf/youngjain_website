@@ -32,14 +32,14 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Chaturmas", href: "/education/chaturmas" },
     ],
   },
-  {
-    label: "Our Bulletins",
-    href: "/our-bulletins",
-    children: [
-      { label: "Blogs", href: "/our-bulletins/blogs" },
-      { label: "Newsletter", href: "/our-bulletins/newsletter" },
-    ],
-  },
+  // {
+  //   label: "Our Bulletins",
+  //   href: "/our-bulletins",
+  //   children: [
+  //     { label: "Blogs", href: "/our-bulletins/blogs" },
+  //     { label: "Newsletter", href: "/our-bulletins/newsletter" },
+  //   ],
+  // },
 ];
 
 export const HERO_SLIDES = [
@@ -60,18 +60,18 @@ export const PRINCIPLES = [
 export const FOOTER_GROUPS = [
   { title: "Quick Links", links: [
     { label: "Home", href: "/" }, { label: "About Us", href: "/about" },
-    { label: "Volunteer", href: "/volunteer" }, { label: "Events", href: "/events" },
+    { label: "Volunteer", href: "/volunteer" }, { label: "Events", href: "/events" },{ label: "Contact Us", href: "/contact" }
   ]},
   { title: "Education", links: [
     { label: "Agam Vachan", href: "/education/agam-vachan" },
-    { label: "Paathshala", href: "/education/paathshala" },
+    // { label: "Paathshala", href: "/education/paathshala" },
     { label: "Swadhyay", href: "/education/swadhyay" },
     { label: "Chaturmas", href: "/education/chaturmas" },
   ]},
-  { title: "Connect", links: [
-    { label: "Instagram", href: "#" }, { label: "YouTube", href: "#" },
-    { label: "WhatsApp", href: "#" }, { label: "Email", href: "#" },
-  ]},
+  // { title: "Connect", links: [
+  //   { label: "Instagram", href: "#" }, { label: "YouTube", href: "#" },
+  //   { label: "WhatsApp", href: "#" }, { label: "Email", href: "#" },
+  // ]},
 ];
 
 export const MARQUEE_WORDS = [

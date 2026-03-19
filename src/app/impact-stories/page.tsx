@@ -8,12 +8,12 @@ export default function ImpactPage() {
       <div style={{maxWidth:1280,margin:"0 auto"}}>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:20}}>
           {[
-            {t:"Awards",d:"Recognition and honours our community has received over the years.",href:"/impact-stories/awards",i:"🏆"},
+            {t:"Awards",d:"Recognition and honours our community has received over the years.",href:"/impact-stories/awards"},
             // {t:"Achievements",d:"Milestones, numbers, and accomplishments we're proud of.",href:"/impact-stories/achievements",i:"📈"},
-            {t:"Testimonials",d:"Hear from members about how YoungJains impacted their lives.",href:"/impact-stories/testimonials",i:"💬"},
-            {t:"Photos & Videos",d:"Relive our best moments through our media gallery.",href:"/impact-stories/photos-videos",i:"📸"},
+            {t:"Testimonials",d:"Hear from members about how YoungJains impacted their lives.",href:"/impact-stories/testimonials"},
+            {t:"Photos & Videos",d:"Relive our best moments through our media gallery.",href:"/impact-stories/photos-videos"},
           ].map((item,i)=>(
-            <Reveal key={item.t} delay={i*0.1}><Link href={item.href}><BentoCard title={item.t} desc={item.d} tagColor={i%2===0?"navy":"red"}><div style={{fontSize:40,marginTop:12,opacity:0.6}}>{item.i}</div></BentoCard></Link></Reveal>
+            <Reveal key={item.t} delay={i*0.1}><Link href={item.href}><BentoCard title={item.t} desc={item.d} tagColor={i%2===0?"navy":"red"} /></Link></Reveal>
           ))}
         </div>
       </div>

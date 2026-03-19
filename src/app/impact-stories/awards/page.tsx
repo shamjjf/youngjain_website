@@ -1,50 +1,51 @@
 "use client";
 import React, { useState } from "react";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 
 
 // ─── Awards Data — replace images with your actual award photos ───
 const featuredAwards = [
   {
-    title: "Best Youth Community Initiative",
+    title: "Maharshi Anand Seva Puruskar",
     year: "2025",
-    org: "Jain International Organisation",
-    desc: "Recognised for outstanding contribution towards youth engagement in Jain education and cultural preservation.",
-    img: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=600&q=80",
+    org: " Maharshi Anand Bhakti Seva Pratishthan",
+    desc: "Honoured for their dedication to Seva, Ahimsa, and compassionate leadership, recognising their sincere efforts in promoting humanitarian values from a young age.",
+    img: "/assets/images/impact-stories/awards/maharshi-anand-seva-puruskar.webp",
   },
   {
-    title: "Excellence in Seva & Outreach",
+    title: "National Young Achievers Award",
+    year: "2025",
+    org: "Suryadatta Institutes",
+    desc: "Recognised for impactful leadership and social initiatives through YoungJains, celebrating the spirit of Shraddha and Nishkam Seva carried out with humility and dedication.",
+    img: "/assets/images/impact-stories/awards/national-young-achievers-award.webp",
+  },
+  {
+    title: "Jain Star Puraskar",
     year: "2024",
-    org: "National Seva Foundation",
-    desc: "Awarded for impactful community service projects including food drives, eco-cleanups, and health camps.",
-    img: "https://images.unsplash.com/photo-1553729459-uj4a9e2d0dec?w=600&q=80",
+    org: "Bhagwan Mahavir Swami Samiti",
+    desc: "Recognised for inspiring youth to practise Jain Dharma values through community service, awareness initiatives, and compassionate leadership within the Jain community.",
+    img: "/assets/images/impact-stories/awards/jain-star-puraskar.webp",
   },
   {
-    title: "Spiritual Education Leadership",
+    title: "Jain Baal Ratna Award",
     year: "2024",
-    org: "Jain Education Board",
-    desc: "Honoured for innovative Paathshala and Swadhyay programs that made Jain philosophy accessible to youth.",
-    img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
-  },
-  {
-    title: "Youth Empowerment Award",
-    year: "2023",
-    org: "Cultural Heritage Council",
-    desc: "Recognised for creating platforms that empower young Jains to lead, learn, and serve their communities.",
-    img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80",
+    org: "Shrirampur Shree Sangh",
+    desc: "Honoured for early dedication to Seva and Jain Sanskar, inspiring young minds to practise Ahimsa, compassion, and Maitri in everyday life.",
+    img: "/assets/images/impact-stories/awards/jain-baal-ratna-award.webp",
   },
 ];
 
 // ─── Gallery Images — replace with your actual award ceremony / event photos ───
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", caption: "Award Ceremony 2025" },
-  { src: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80", caption: "Youth Leadership Summit" },
-  { src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80", caption: "Community Recognition Event" },
-  { src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80", caption: "Seva Excellence Honours" },
-  { src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80", caption: "Annual Gathering 2024" },
-  { src: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80", caption: "Team Celebration" },
-  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80", caption: "Education Workshop Award" },
-  { src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80", caption: "Paathshala Recognition" },
+  { src: "/assets/images/impact-stories/awards/1.webp", caption: "Award Ceremony 2025" },
+  { src: "/assets/images/impact-stories/awards/2.webp", caption: "Youth Leadership Summit" },
+  { src: "/assets/images/impact-stories/awards/3.webp", caption: "Community Recognition Event" },
+  { src: "/assets/images/impact-stories/awards/4.webp", caption: "Seva Excellence Honours" },
+  { src: "/assets/images/impact-stories/awards/5.webp", caption: "Annual Gathering 2024" },
+  { src: "/assets/images/impact-stories/awards/6.webp", caption: "Team Celebration" },
+  { src: "/assets/images/impact-stories/awards/7.webp", caption: "Education Workshop Award" },
+  { src: "/assets/images/impact-stories/awards/8.webp", caption: "Paathshala Recognition" },
 ];
 
 export default function AwardsPage() {
@@ -55,7 +56,7 @@ export default function AwardsPage() {
       <style>{`
         .award-card{background:#fff;border-radius:20px;overflow:hidden;border:1.5px solid rgba(15,35,106,0.06);transition:all 0.5s cubic-bezier(.16,1,.3,1)}
         .award-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(15,35,106,0.1)}
-        .award-img{width:100%;height:220px;object-fit:cover;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
+        .award-img{width:100%;height:220px;object-fit:cover;object-position:0px -40px;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
         .award-card:hover .award-img{transform:scale(1.05)}
         .gallery-item{border-radius:16px;overflow:hidden;cursor:pointer;position:relative;transition:all 0.4s cubic-bezier(.16,1,.3,1)}
         .gallery-item:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,35,106,0.1)}
@@ -173,11 +174,11 @@ export default function AwardsPage() {
                     onClick={() => setLightbox(i)}
                   >
                     <img src={img.src} alt={img.caption} loading="lazy" />
-                    <div className="gallery-overlay">
+                     {/* <div className="gallery-overlay">
                       <span style={{ fontFamily: "var(--fb)", fontSize: 13, fontWeight: 600, color: "#fff" }}>
-                        {img.caption}
+                       {img.caption}
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </Reveal>
               );
@@ -206,7 +207,7 @@ export default function AwardsPage() {
             onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % galleryImages.length); }}
           >→</button>
           <div className="lightbox-caption">
-            {galleryImages[lightbox].caption} — {lightbox + 1} / {galleryImages.length}
+            {/* {galleryImages[lightbox].caption} — */} {lightbox + 1} / {galleryImages.length}
           </div>
         </div>
       )}
@@ -229,7 +230,7 @@ export default function AwardsPage() {
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <a href="/volunteer" style={{
+            {/* <a href="/volunteer" style={{
               display: "inline-block", marginTop: 28,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15,
               background: "var(--red)", color: "#fff",
@@ -237,7 +238,8 @@ export default function AwardsPage() {
               transition: "all 0.4s",
             }}>
               Join the Community →
-            </a>
+            </a> */}
+            <Button text="Join the Community" href="/volunteer" />
           </Reveal>
         </div>
       </section>

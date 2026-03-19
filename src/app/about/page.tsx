@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "About Us" };
 export default function AboutPage() {
   return (
@@ -13,7 +14,7 @@ export default function AboutPage() {
         .jewel-card{background:#fff;border:1.5px solid rgba(15,35,106,0.06);border-radius:20px;padding:36px 28px;text-align:center;transition:all 0.5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
         .jewel-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;border-radius:0 0 20px 20px;transition:height 0.4s}
         .jewel-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(15,35,106,0.08)}
-        .provides-item{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--ice)}
+        .provides-item{display:flex;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--ice)}
         .provides-item:last-child{border-bottom:none}
         .quote-block{border-left:4px solid var(--red);padding:20px 28px;background:rgba(253,24,16,0.03);border-radius:0 16px 16px 0;margin:32px 0}
         .philosophy-img{width:100%;height:360px;object-fit:cover;border-radius:20px;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
@@ -106,7 +107,7 @@ export default function AboutPage() {
           <div className="philosophy-split" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", marginTop: 20 }}>
             <Reveal delay={0.15}>
               <img
-                src="https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=800&q=80"
+                src="/assets/images/about/all-life-is-bound.webp"
                 alt="Spiritual contemplation"
                 className="philosophy-img"
                 loading="lazy"
@@ -126,13 +127,14 @@ export default function AboutPage() {
                 <p style={{ fontFamily: "var(--fb)", fontSize: 14, color: "var(--slate)", marginTop: 24, fontStyle: "italic" }}>
                   → Explore conscious and compassionate living
                 </p>
-                <Link href="/education" style={{
+                {/* <Link href="/education" style={{
                   display: "inline-flex", alignItems: "center", gap: 8, marginTop: 20,
                   fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff",
                   padding: "14px 32px", borderRadius: 12, textDecoration: "none", transition: "all 0.4s",
                 }}>
                   DISCOVER NOW →
-                </Link>
+                </Link> */}
+                <Button href="/education" text="DISCOVER NOW" />
               </div>
             </Reveal>
           </div>
@@ -169,14 +171,16 @@ export default function AboutPage() {
 
           <div className="jewels-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginTop: 8 }}>
             {[
-              { icon: "💎", title: "Right Faith", sub: "Samyak Darshan", desc: "Cultivating inner clarity and openness — seeing the world as it truly is, with trust in the path.", color: "var(--navy)" },
-              { icon: "📖", title: "Right Knowledge", sub: "Samyak Jnana", desc: "Understanding Jain principles deeply — not just information, but insight that transforms perspective.", color: "var(--red)" },
-              { icon: "🙏", title: "Right Conduct", sub: "Samyak Charitra", desc: "Applying values in daily life — from speech and food choices to relationships and service.", color: "var(--navy)" },
+              { src: "/assets/images/icons/about-faith-1.png", title: "Right Faith", sub: "Samyak Darshan", desc: "Cultivating inner clarity and openness — seeing the world as it truly is, with trust in the path.", color: "var(--navy)" },
+              { src: "/assets/images/icons/about-right-knowledge.png", title: "Right Knowledge", sub: "Samyak Jnana", desc: "Understanding Jain principles deeply — not just information, but insight that transforms perspective.", color: "var(--red)" },
+              { src: "/assets/images/icons/about-right-conduct-1.png", title: "Right Conduct", sub: "Samyak Charitra", desc: "Applying values in daily life — from speech and food choices to relationships and service.", color: "var(--navy)" },
             ].map((jewel, i) => (
               <Reveal key={jewel.title} delay={i * 0.12}>
                 <div className="jewel-card">
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: jewel.color, borderRadius: "0 0 20px 20px" }} />
-                  <div style={{ fontSize: 40, marginBottom: 16 }}>{jewel.icon}</div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: 16 }}>
+                    <img src={jewel.src} style={{ width: "32px", height: "32px" }} />
+                    </div>
                   <h3 style={{ fontFamily: "var(--fh)", fontSize: 22, fontWeight: 700, color: "var(--navy)", marginBottom: 4 }}>{jewel.title}</h3>
                   <div style={{ fontFamily: "var(--fd)", fontSize: 13, color: jewel.color, fontWeight: 500, marginBottom: 14 }}>{jewel.sub}</div>
                   <p style={{ fontFamily: "var(--fb)", fontSize: 14, lineHeight: 1.75, color: "var(--slate)" }}>{jewel.desc}</p>
@@ -208,14 +212,14 @@ export default function AboutPage() {
             <div style={{ maxWidth: 700, margin: "0 auto" }}>
               <h4 style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "var(--navy)", marginBottom: 8 }}>YoungJains Provides:</h4>
               {[
-                { icon: "📚", text: "Swadhyay and Paathshala learning spaces" },
-                { icon: "💻", text: "Interactive webinars on Jain ethics and modern life" },
-                { icon: "🤝", text: "Youth-led seva initiatives" },
-                { icon: "🧘", text: "Reflection circles for inner growth" },
+                { text: "Swadhyay and Paathshala learning spaces" },
+                { text: "Interactive webinars on Jain ethics and modern life" },
+                { text: "Youth-led seva initiatives" },
+                { text: "Reflection circles for inner growth" },
               ].map((item, i) => (
                 <Reveal key={i} delay={0.2 + i * 0.06}>
                   <div className="provides-item">
-                    <span style={{ fontSize: 24, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+                    <span style={{ fontSize: 24, width: "10px", height: "10px", backgroundColor: "rgb(253, 24, 16)", borderRadius: "16px", flexShrink: 0, marginTop: 2 }}></span>
                     <p style={{ fontFamily: "var(--fb)", fontSize: 16, color: "var(--slate)", lineHeight: 1.6 }}>{item.text}</p>
                   </div>
                 </Reveal>
@@ -251,18 +255,19 @@ export default function AboutPage() {
                 <p style={{ fontFamily: "var(--fb)", fontSize: 16, lineHeight: 1.9, color: "var(--navy)", fontWeight: 600, marginTop: 16 }}>
                   Join us in living knowledge, practicing ahimsa, and growing together with clarity and care.
                 </p>
-                <Link href="/volunteer" style={{
+                {/* <Link href="/volunteer" style={{
                   display: "inline-flex", alignItems: "center", gap: 8, marginTop: 28,
                   fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15, background: "var(--red)", color: "#fff",
                   padding: "16px 36px", borderRadius: 12, textDecoration: "none", transition: "all 0.4s",
                 }}>
                   JOIN THE COMMUNITY →
-                </Link>
+                </Link> */}
+                <Button href="/volunteer" text="JOIN THE COMMUNITY" />
               </div>
             </Reveal>
             <Reveal delay={0.15}>
               <img
-                src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80"
+                src="/assets/images/about/walk-the-path.webp"
                 alt="Community walking together"
                 className="philosophy-img"
                 loading="lazy"

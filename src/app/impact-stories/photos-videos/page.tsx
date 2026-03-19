@@ -1,31 +1,70 @@
 "use client";
 import React, { useState } from "react";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 
 // ─── Gallery Data — replace with your actual images ───
 const categories = ["All", "Events", "Seva", "Education", "Celebrations", "Community"];
 
 const photos = [
-  { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80", caption: "Annual Youth Convention 2025", cat: "Events", tall: true },
-  { src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80", caption: "Community Food Drive", cat: "Seva", tall: false },
-  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80", caption: "Paathshala Workshop", cat: "Education", tall: false },
-  { src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80", caption: "Paryushan Celebration", cat: "Celebrations", tall: true },
-  { src: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80", caption: "Youth Group Meet", cat: "Community", tall: false },
-  { src: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80", caption: "Leadership Summit", cat: "Events", tall: false },
-  { src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80", caption: "Volunteer Recognition", cat: "Seva", tall: true },
-  { src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80", caption: "Agam Vachan Circle", cat: "Education", tall: false },
-  { src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80", caption: "Chaturmas Gathering", cat: "Celebrations", tall: false },
-  { src: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=600&q=80", caption: "Meditation Session", cat: "Community", tall: true },
-  { src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", caption: "Swadhyay Retreat", cat: "Education", tall: false },
-  { src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80", caption: "Community Celebration", cat: "Celebrations", tall: false },
+
+  // Events images
+  { src: "/assets/images/impact-stories/photos/events-1.webp", caption: "Maharshi Anand Seva Puraskar", cat: "Events", tall: false },
+  { src: "/assets/images/impact-stories/photos/events-2.webp", caption: "Suryadatta 27th Foundation Day", cat: "Events", tall: false },
+
+  // Seva images
+  { src: "/assets/images/impact-stories/photos/seva-1.webp", caption: "Guru Vandana", cat: "Seva", tall: false },
+  { src: "/assets/images/impact-stories/photos/seva-2.webp", caption: "Jain Seva", cat: "Seva", tall: false },
+
+  // Education images
+  { src: "/assets/images/impact-stories/photos/education-1.webp", caption: "Maharshi Anand Seva Puraskar", cat: "Education", tall: true },
+  { src: "/assets/images/impact-stories/photos/education-2.webp", caption: "Anand Darbar", cat: "Education", tall: false },
+  // { src: "/assets/images/impact-stories/photos/education-3.webp", caption: "Chaturmas Gathering", cat: "Education", tall: false },
+  // { src: "/assets/images/impact-stories/photos/education-4.webp", caption: "Meditation Session", cat: "Education", tall: true },
+  // { src: "/assets/images/impact-stories/photos/education-5.webp", caption: "Meditation Session", cat: "Education", tall: true },
+
+  // Celebrations images
+  { src: "/assets/images/impact-stories/photos/celebration-1.webp", caption: "Jainam’s Birthday", cat: "Celebrations", tall: true },
+  { src: "/assets/images/impact-stories/photos/celebration-2.webp", caption: "Mahavir Janmotsav", cat: "Celebrations", tall: false },
+  { src: "/assets/images/impact-stories/photos/celebration-3.webp", caption: "Mahavir Janmotsav", cat: "Celebrations", tall: false },
+  { src: "/assets/images/impact-stories/photos/celebration-4.webp", caption: "Mahavir Janmotsav", cat: "Celebrations", tall: true },
+
+  // Community images
+  { src: "/assets/images/impact-stories/photos/community-1.webp", caption: "Anand Darbar", cat: "Community", tall: false },
+  { src: "/assets/images/impact-stories/photos/community-2.webp", caption: "Anand Darbar", cat: "Community", tall: false },
+  { src: "/assets/images/impact-stories/photos/community-4.webp", caption: "Maharshi Anand Seva Puraskar", cat: "Community", tall: false },
+  { src: "/assets/images/impact-stories/photos/community-5.webp", caption: "Anand Darbar", cat: "Community", tall: false },
+  { src: "/assets/images/impact-stories/photos/community-7.webp", caption: "Leadership Summit", cat: "Community", tall: false },
+  // { src: "/assets/images/impact-stories/photos/community-3.webp", caption: "Leadership Summit", cat: "Community", tall: false },
+  // { src: "/assets/images/impact-stories/photos/community-6.webp", caption: "Leadership Summit", cat: "Community", tall: false },
+  // { src: "/assets/images/impact-stories/photos/community-2.webp", caption: "Leadership Summit", cat: "Community", tall: false },
 ];
 
 // ─── Videos — replace with your actual YouTube embed IDs ───
 const videos = [
-  { id: "dQw4w9WgXcQ", title: "YoungJains Annual Convention Highlights 2025", cat: "Events" },
-  { id: "dQw4w9WgXcQ", title: "What is Swadhyay? — A Youth Perspective", cat: "Education" },
-  { id: "dQw4w9WgXcQ", title: "Seva in Action — Community Food Drive", cat: "Seva" },
-  { id: "dQw4w9WgXcQ", title: "Chaturmas Special — Daily Pravachan Series", cat: "Celebrations" },
+  { 
+    link: "https://youtu.be/4vGxXuTU0r8?si=wJoVn7RIKsHMgx0u", 
+    src: "/assets/images/videos/living-jain-values.jpg", 
+    title: "Living Jain Values in Real Life", 
+    cat: "Events" 
+  },
+  { 
+    link: "https://www.youtube.com/watch?v=vlf455RrI4A", 
+    src: "/assets/images/videos/true-wealth-lies.jpg", 
+    title: "True Wealth Lies in Wisdom", 
+    cat: "Education" 
+  },
+  { link: "https://www.youtube.com/watch?v=jcoUZEPwZTY", 
+    src: "/assets/images/videos/jain-values-in.jpg", 
+    title: "Jain Values in Everyday Life", 
+    cat: "Seva" 
+  },
+  { 
+    link: "https://www.youtube.com/watch?v=6P4SsxZXb-s&t=84s", 
+    src: "/assets/images/videos/the-jain-way.jpg", 
+    title: "The Jain Way Of Life", 
+    cat: "Celebrations" 
+  },
 ];
 
 export default function PhotosVideosPage() {
@@ -152,39 +191,41 @@ export default function PhotosVideosPage() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal><SectionHeader badge="VIDEOS" title={<>Watch & <span style={{ fontWeight: 800, color: "var(--red)" }}>Learn</span></>} subtitle="Video highlights from our events, workshops, and community activities." /></Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-            {videos.map((video, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div style={{ background: "#fff", borderRadius: 20, overflow: "hidden", border: "1.5px solid rgba(15,35,106,0.06)", transition: "all 0.4s cubic-bezier(.16,1,.3,1)" }}
-                  onMouseOver={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(15,35,106,0.08)"; }}
-                  onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-                >
-                  {/* Video Thumbnail — replace with actual YouTube embeds or thumbnails */}
-                  <div style={{ position: "relative", paddingBottom: "56.25%", background: "var(--navy)" }}>
-                    <img src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} alt={video.title} loading="lazy"
-                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}
-                    />
-                    {/* Play button overlay */}
-                    <div style={{
-                      position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                    }}>
-                      <div style={{
-                        width: 60, height: 60, borderRadius: "50%", background: "var(--red)", display: "flex",
-                        alignItems: "center", justifyContent: "center", boxShadow: "0 8px 32px rgba(253,24,16,0.3)",
-                      }}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
-                      </div>
-                    </div>
-                    {/* Category badge */}
-                    <div style={{ position: "absolute", top: 12, left: 12, padding: "4px 12px", borderRadius: 6, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
-                      <span style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 600, color: "#fff", letterSpacing: 1 }}>{video.cat}</span>
-                    </div>
-                  </div>
-                  <div style={{ padding: "20px 22px" }}>
-                    <h3 style={{ fontFamily: "var(--fh)", fontSize: 17, fontWeight: 700, color: "var(--navy)", lineHeight: 1.4 }}>{video.title}</h3>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+        {videos.map((video, i) => (
+          <Reveal key={i} delay={i * 0.08}>
+            <a href={video.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <div style={{ background: "#fff", borderRadius: 20, overflow: "hidden", border: "1.5px solid rgba(15,35,106,0.06)", transition: "all 0.4s cubic-bezier(.16,1,.3,1)", cursor: "pointer" }}
+            onMouseOver={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(15,35,106,0.08)"; }}
+            onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+          >
+            {/* Video Thumbnail */}
+            <div style={{ position: "relative", paddingBottom: "56.25%", background: "var(--navy)" }}>
+              <img src={video.src} alt={video.title} loading="lazy"
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }}
+              />
+              {/* Play button overlay */}
+              <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+            <div style={{
+              width: 60, height: 60, borderRadius: "50%", background: "var(--red)", display: "flex",
+              alignItems: "center", justifyContent: "center", boxShadow: "0 8px 32px rgba(253,24,16,0.3)",
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
+            </div>
+              </div>
+              {/* Category badge */}
+              {/* <div style={{ position: "absolute", top: 12, left: 12, padding: "4px 12px", borderRadius: 6, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}>
+            <span style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 600, color: "#fff", letterSpacing: 1 }}>{video.cat}</span>
+              </div> */}
+            </div>
+            <div style={{ padding: "20px 22px" }}>
+              <h3 style={{ fontFamily: "var(--fh)", fontSize: 17, fontWeight: 700, color: "var(--navy)", lineHeight: 1.4 }}>{video.title}</h3>
+            </div>
+          </div>
+            </a>
+          </Reveal>
+        ))}
           </div>
         </div>
       </section>
@@ -194,7 +235,6 @@ export default function PhotosVideosPage() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
         <div style={{ maxWidth: 600, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <Reveal>
-            <div style={{ fontSize: 48, marginBottom: 16 }}>📸</div>
             <h2 style={{ fontFamily: "var(--fh)", fontSize: 30, fontWeight: 300, color: "#fff", lineHeight: 1.3 }}>
               Have Photos or Videos to <span style={{ fontWeight: 800, color: "var(--red-l)" }}>Share?</span>
             </h2>
@@ -203,12 +243,13 @@ export default function PhotosVideosPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <a href="mailto:media@youngjains.org" style={{
+            {/* <a href="mailto:media@youngjains.org" style={{
               display: "inline-block", marginTop: 24, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14,
               background: "var(--red)", color: "#fff", padding: "14px 32px", borderRadius: 12, textDecoration: "none",
             }}>
               Submit Your Media →
-            </a>
+            </a> */}
+            <Button href="#" text="Submit Your Media" />
           </Reveal>
         </div>
       </section>

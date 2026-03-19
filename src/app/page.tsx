@@ -4,38 +4,47 @@ import Link from "next/link";
 import { Reveal, SectionHeader, CounterCard } from "@/components/ui";
 import { MARQUEE_WORDS } from "@/lib/constants";
 import { isDevanagari } from "@/lib/utils";
+import Button from "@/components/ui/button/button";
 import s from "@/styles/Home.module.css";
 
 // Hero slides — community images
+// const heroImages = [
+//   "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80",   // youth group
+//   "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&q=80",   // meditation calm
+//   "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&q=80",   // volunteering seva
+//   "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80",   // youth facilitation
+// ];
+
 const heroImages = [
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80",   // youth group
-  "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&q=80",   // meditation calm
-  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&q=80",   // volunteering seva
-  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80",   // youth facilitation
+  // "/assets/images/homepage/hero/5.mp4",   // Young jains video
+  "/assets/images/homepage/hero/1.webp",   // youth group
+  "/assets/images/homepage/hero/2.webp",   // meditation calm
+  "/assets/images/homepage/hero/3.webp",   // volunteering seva
+  "/assets/images/homepage/hero/4.webp",   // youth facilitation
 ];
 
 // Zigzag content blocks with images
 const zigzagBlocks = [
   {
-    img: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    img: "/assets/images/homepage/agam-vachan-circles.webp",
     alt: "Youth studying Agam Vachan in a circle",
     title: "Agam Vachan Circles",
     desc: "Young seekers sit together to read, discuss, and internalise the sacred Agam texts — transforming ancient scripture into living dialogue.",
   },
   {
-    img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80",
+    img: "/assets/images/homepage/meditation-and-mindfulness.webp",
     alt: "Meditation in a calm hall",
     title: "Meditation & Mindfulness",
     desc: "Silent sessions in calm spaces where youth practise Jain meditation techniques — cultivating inner stillness, awareness, and self-reflection.",
   },
   {
-    img: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80",
+    img: "/assets/images/homepage/seva-in-action.webp",
     alt: "Seva activity — food drive and eco activity",
     title: "Seva in Action",
     desc: "From food drives to eco-cleanups, our youth channel compassion into tangible impact — making Ahimsa a lived practice, not just a principle.",
   },
   {
-    img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+    img: "/assets/images/homepage/youth-led-sessions.webp",
     alt: "Young facilitators leading sessions",
     title: "Youth-Led Sessions",
     desc: "Young facilitators lead workshops, discussions, and learning circles — empowering peers to explore Jain wisdom in their own voice.",
@@ -80,6 +89,9 @@ export default function HomePage() {
       <section onMouseMove={handleMouse} style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden", background: "#081445" }}>
         {/* Carousel */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+          <div>
+
+          </div>
           {heroImages.map((src, i) => (
             <div key={i} style={{
               position: "absolute", inset: 0, backgroundImage: `url(${src})`, backgroundSize: "cover", backgroundPosition: "center",
@@ -128,13 +140,15 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <Link href="/education" style={{
+            {/* <Link href="/education" style={{
               display: "inline-flex", alignItems: "center", gap: 10, marginTop: 40,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16, background: "var(--red)", color: "#fff",
               padding: "18px 40px", borderRadius: 12, transition: "all 0.4s", textDecoration: "none",
+              maxWidth: "316px"
             }}>
-              Experience the Jain Living →
-            </Link>
+              Experience the Jain Living
+            </Link> */}
+            <Button text="Experience the Jain Living" href="/education" />
           </Reveal>
         </div>
       </section>
@@ -310,7 +324,7 @@ export default function HomePage() {
           </div>
 
           <Reveal delay={0.3}>
-            <div style={{ textAlign: "center", marginTop: 48 }}>
+            {/* <div style={{ textAlign: "center", marginTop: 48 }}>
               <Link href="/education" style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15, background: "var(--navy)", color: "#fff",
@@ -318,6 +332,9 @@ export default function HomePage() {
               }}>
                 Explore Learning →
               </Link>
+            </div> */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
+              <Button text="Explore Learning" href="/education" primary={false} />
             </div>
           </Reveal>
         </div>
@@ -367,13 +384,14 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <Link href="/volunteer" style={{
+            {/* <Link href="/volunteer" style={{
               display: "inline-flex", alignItems: "center", gap: 10, marginTop: 48,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 17, background: "var(--red)", color: "#fff",
               padding: "20px 48px", borderRadius: 14, transition: "all 0.4s", textDecoration: "none",
             }}>
-              Begin Your Journey →
-            </Link>
+              Begin Your Journey
+            </Link> */}
+            <Button href="/volunteer" text="Begin Your Journey" />
           </Reveal>
 
           {/* Tagline */}

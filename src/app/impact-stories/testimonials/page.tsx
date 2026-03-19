@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Testimonials" };
 
 const featured = {
   quote: "YoungJains didn't just teach me Jain philosophy — it gave me a community where I could question, reflect, and grow at my own pace. The Swadhyay circles changed the way I see myself and the world around me.",
   name: "Ananya Mehta",
-  role: "Member since 2022",
+  role: "",
   location: "Mumbai",
 };
 
@@ -47,18 +48,18 @@ const testimonials = [
     role: "Young Professional Member",
     tag: "COMMUNITY",
   },
-  {
-    quote: "Volunteering in the content team helped me use my design skills for something meaningful. Creating materials for Paathshala was deeply fulfilling.",
-    name: "Dhruv Bhandari",
-    role: "Creative Seva Volunteer",
-    tag: "CREATIVE SEVA",
-  },
-  {
-    quote: "The meditation sessions during Chaturmas brought a stillness I had never experienced. It wasn't about escaping life — it was about truly being present.",
-    name: "Riya Jain",
-    role: "Meditation Practitioner",
-    tag: "MEDITATION",
-  },
+  // {
+  //   quote: "Volunteering in the content team helped me use my design skills for something meaningful. Creating materials for Paathshala was deeply fulfilling.",
+  //   name: "Dhruv Bhandari",
+  //   role: "Creative Seva Volunteer",
+  //   tag: "CREATIVE SEVA",
+  // },
+  // {
+  //   quote: "The meditation sessions during Chaturmas brought a stillness I had never experienced. It wasn't about escaping life — it was about truly being present.",
+  //   name: "Riya Jain",
+  //   role: "Meditation Practitioner",
+  //   tag: "MEDITATION",
+  // },
 ];
 
 const stats = [
@@ -107,7 +108,7 @@ export default function TestimonialsPage() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "var(--fh)", fontSize: 18, fontWeight: 700, color: "var(--navy)" }}>{featured.name}</div>
-                  <div style={{ fontFamily: "var(--fb)", fontSize: 13, color: "var(--slate)" }}>{featured.role} · {featured.location}</div>
+                  <div style={{ fontFamily: "var(--fb)", fontSize: 13, color: "var(--slate)" }}>{/* featured.role */} {featured.location}</div>
                 </div>
               </div>
             </div>
@@ -182,8 +183,9 @@ export default function TestimonialsPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
-              <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 32px", borderRadius: 12, textDecoration: "none" }}>Join the Community →</Link>
-              <Link href="/impact-stories" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>← Back to Impact</Link>
+              {/* <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 32px", borderRadius: 12, textDecoration: "none" }}>Join the Community →</Link> */}
+              {/* <Link href="/impact-stories" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>← Back to Impact</Link> */}
+              <Button href="/volunteer" text="Join the Community" />
             </div>
           </Reveal>
         </div>

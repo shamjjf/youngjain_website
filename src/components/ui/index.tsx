@@ -86,6 +86,27 @@ export function BentoCard({ tag, title, desc, tagColor = "navy", children }: {
   );
 }
 
+export function BentoCard2({ tag, title, desc, tagColor = "navy", children }: {
+  tag?: string; title: string; desc?: string; tagColor?: "navy" | "red"; children?: React.ReactNode;
+}) {
+  const bg = tagColor === "red" ? "rgba(253,24,16,0.06)" : "rgba(15,35,106,0.06)";
+  const clr = tagColor === "red" ? "var(--red)" : "var(--navy)";
+  return (
+    <div style={{
+      background: "#fff", border: "1.5px solid rgba(15,35,106,0.06)", borderRadius: 24,
+      padding: "36px 32px", transition: "all 0.5s cubic-bezier(.16,1,.3,1)", position: "relative", overflow: "hidden", cursor: "default",
+    }}
+      onMouseOver={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 20px 50px rgba(15,35,106,0.08)"; }}
+      onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+    >
+      {children}
+      {tag && <div style={{ display: "inline-block", padding: "4px 12px", borderRadius: 6, background: bg, fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, color: clr, letterSpacing: 2, marginBottom: 16 }}>{tag}</div>}
+      <h3 style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "var(--navy)", marginBottom: 10 }}>{title}</h3>
+      {desc && <p style={{ fontFamily: "var(--fb)", fontSize: 14, lineHeight: 1.75, color: "var(--slate)" }}>{desc}</p>}
+    </div>
+  );
+}
+
 /* ─── Placeholder Grid ─── */
 export function PlaceholderGrid({ items }: { items: { title: string; desc: string; icon: string }[] }) {
   return (

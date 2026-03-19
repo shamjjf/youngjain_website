@@ -77,7 +77,7 @@ export function Navbar() {
               )}
             </div>
           ))}
-          <Link href="/volunteer" className={styles.joinBtn}>Join Us</Link>
+          <Link href="/contact" className={styles.joinBtn}>Join Us</Link>
         </div>
 
         {/* ── Mobile toggle ── */}
@@ -120,8 +120,8 @@ export function Navbar() {
               )}
             </div>
           ))}
-          <Link href="/volunteer" className={styles.joinBtn} style={{ marginTop: 12, alignSelf: "flex-start" }}>
-            Join Us
+          <Link href="/contact" className={styles.joinBtn} style={{ marginTop: 12, alignSelf: "flex-start" }}>
+            Contact Us
           </Link>
         </div>
       )}

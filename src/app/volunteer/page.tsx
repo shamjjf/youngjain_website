@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Volunteer" };
 
 const sevaValues = [
@@ -17,19 +18,23 @@ const sevaValues = [
 
 const whoCanVolunteer = [
   {
-    icon: "🎓", title: "Students",
+    src: "/assets/images/icons/volunteer-students.png",
+    title: "Students",
     desc: "Support campus outreach, events, content, and youth activities while building confidence and leadership.",
   },
   {
-    icon: "💼", title: "Young Professionals",
+    src: "/assets/images/icons/volunteer-young-professionals-1.png",
+    title: "Young Professionals",
     desc: "Use your skills in management, design, social media, training, or mentoring to strengthen projects.",
   },
   {
-    icon: "📖", title: "Beginners in Jain Learning",
+    src: "/assets/images/icons/volunteer-learning.png",
+    title: "Beginners in Jain Learning",
     desc: "Learn Jain values while helping in awareness programs and study circles.",
   },
   {
-    icon: "🤲", title: "Anyone with Sincerity to Serve",
+    src: "/assets/images/icons/volunteer--Sincerity-1.png",
+    title: "Anyone with Sincerity to Serve",
     desc: "Assist in field work, food drives, cleanliness activities, or logistics. Intent matters most.",
   },
 ];
@@ -44,7 +49,7 @@ export default function VolunteerPage() {
         .val-icon{width:32px;height:32px;border-radius:10px;background:rgba(253,24,16,0.06);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
         .who-card{background:#fff;border-radius:20px;padding:32px 28px;border:1.5px solid rgba(15,35,106,0.06);transition:all 0.5s cubic-bezier(.16,1,.3,1);height:100%}
         .who-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(15,35,106,0.08);border-color:rgba(15,35,106,0.12)}
-        .who-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px}
+        .who-icon{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px}
         .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
         .explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
         @media(max-width:900px){
@@ -73,7 +78,7 @@ export default function VolunteerPage() {
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <Link href="#register" style={{
+            {/* <Link href="#register" style={{
               display: "inline-flex", alignItems: "center", gap: 10, marginTop: 28,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15,
               background: "var(--red)", color: "#fff",
@@ -81,7 +86,8 @@ export default function VolunteerPage() {
               transition: "all 0.4s",
             }}>
               → Become a Volunteer
-            </Link>
+            </Link> */}
+              <Button href="https://app.sevakarmy.com/" target="_blank" text="Become a Volunteer" />
           </Reveal>
         </div>
       </section>
@@ -143,9 +149,9 @@ export default function VolunteerPage() {
             {whoCanVolunteer.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
                 <div className="who-card">
-                  <div className="who-icon" style={{
-                    background: i % 2 === 0 ? "rgba(15,35,106,0.06)" : "rgba(253,24,16,0.06)",
-                  }}>{item.icon}</div>
+                  <div className="who-icon" style={{ background: i % 2 === 0 ? "rgba(15,35,106,0.06)" : "rgba(253,24,16,0.06)", }}>
+                    <img width={36} height={36} src={item.src} />
+                  </div>
                   <h3 style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "var(--navy)", marginBottom: 10 }}>{item.title}</h3>
                   <p style={{ fontFamily: "var(--fb)", fontSize: 14, lineHeight: 1.75, color: "var(--slate)" }}>{item.desc}</p>
                 </div>
@@ -167,7 +173,7 @@ export default function VolunteerPage() {
 
           <Reveal delay={0.4}>
             <div id="register" style={{ textAlign: "center", marginTop: 36 }}>
-              <Link href="/volunteer/seva-journey" style={{
+              {/* <Link href="/volunteer/seva-journey" style={{
                 display: "inline-flex", alignItems: "center", gap: 10,
                 fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15,
                 background: "var(--red)", color: "#fff",
@@ -175,7 +181,8 @@ export default function VolunteerPage() {
                 transition: "all 0.4s",
               }}>
                 Register Now →
-              </Link>
+              </Link> */}
+              <Button href="https://app.sevakarmy.com/" target="_blank" text="Register Now" />
             </div>
           </Reveal>
         </div>
@@ -188,16 +195,12 @@ export default function VolunteerPage() {
           <div className="explore-grid">
             <Reveal delay={0.08}>
               <Link href="/volunteer/seva-pathways">
-                <BentoCard title="Seva Pathways" desc="Discover unique ways to serve — from education and creativity to tech and community building. Find where your skills meet our mission." tagColor="navy">
-                  <div style={{ fontSize: 36, marginTop: 10, opacity: 0.5 }}>🛤️</div>
-                </BentoCard>
+                <BentoCard title="Seva Pathways" desc="Discover unique ways to serve — from education and creativity to tech and community building. Find where your skills meet our mission." tagColor="navy" />
               </Link>
             </Reveal>
             <Reveal delay={0.16}>
               <Link href="/volunteer/seva-journey">
-                <BentoCard title="Seva Journey" desc="Follow the volunteer journey — from first step to lasting impact. See how seva transforms both the giver and the receiver." tagColor="red">
-                  <div style={{ fontSize: 36, marginTop: 10, opacity: 0.5 }}>🚀</div>
-                </BentoCard>
+                <BentoCard title="Seva Journey" desc="Follow the volunteer journey — from first step to lasting impact. See how seva transforms both the giver and the receiver." tagColor="red" />
               </Link>
             </Reveal>
           </div>

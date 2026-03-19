@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+import { Reveal, PageHero, SectionHeader, BentoCard, BentoCard2 } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Education" };
 
 export default function EducationPage() {
@@ -41,14 +42,16 @@ export default function EducationPage() {
           </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, maxWidth: 900, margin: "0 auto" }}>
             {[
-              { icon: "💎", title: "Samyak Darshan", sub: "Right Faith" },
-              { icon: "📖", title: "Samyak Jnana", sub: "Right Knowledge" },
-              { icon: "🙏", title: "Samyak Charitra", sub: "Right Conduct" },
+              { icon: "/assets/images/icons/eye-1.png", title: "Samyak Darshan", sub: "Right Faith" },
+              { icon: "/assets/images/icons/scroll.png", title: "Samyak Jnana", sub: "Right Knowledge" },
+              { icon: "/assets/images/icons/meditation-1.png", title: "Samyak Charitra", sub: "Right Conduct" },
             ].map((r, i) => (
               <Reveal key={r.title} delay={0.2 + i * 0.08}>
-                <BentoCard title={r.title} desc={r.sub} tagColor={i === 1 ? "red" : "navy"}>
-                  <div style={{ fontSize: 32, marginTop: 8 }}>{r.icon}</div>
-                </BentoCard>
+                <BentoCard2 title={r.title} desc={r.sub} tagColor={i === 1 ? "red" : "navy"}>
+                  <div style={{ fontSize: 32, marginBottom: "24px" }}>
+                    <img width={36} height={36} src={r.icon } />
+                  </div>
+                </BentoCard2>
               </Reveal>
             ))}
           </div>
@@ -182,9 +185,9 @@ export default function EducationPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             {[
               { num: "01", title: "Agam Vachan", sub: "Scriptural Foundation", desc: "The Agamas preserve the original teachings of the Tirthankaras. Through listening to pravachans and scriptural study, seekers connect with authentic wisdom.", quote: "स्वाध्याय बिना आत्मा अज्ञान में रहती है।", quoteEng: "Without self-study, the soul remains in ignorance.", cta: "Explore the Agamas", href: "/education/agam-vachan" },
-              { num: "02", title: "Paathshala", sub: "Structured Learning", desc: "Paathshala provides organized education for children and youth — building scriptural understanding, stories of Tirthankaras, moral clarity, and ritual awareness.", cta: "Join YoungJains Paathshala", href: "/education/paathshala" },
-              { num: "03", title: "Swadhyay", sub: "Self-Study & Reflection", desc: "Swadhyay deepens knowledge through independent reading, reflection, and discussion. It transforms information into wisdom and strengthens inner awareness.", cta: "Start Swadhyay Today", href: "/education/swadhyay" },
-              { num: "04", title: "Chaturmas", sub: "Intensive Spiritual Season", desc: "Chaturmas is a sacred four-month spiritual period dedicated to deeper practice — daily pravachans, special vows, austerities, and community learning.", cta: "Participate in Chaturmas", href: "/education/chaturmas" },
+              // { num: "02", title: "Paathshala", sub: "Structured Learning", desc: "Paathshala provides organized education for children and youth — building scriptural understanding, stories of Tirthankaras, moral clarity, and ritual awareness.", cta: "Join YoungJains Paathshala", href: "/education/paathshala" },
+              { num: "02", title: "Swadhyay", sub: "Self-Study & Reflection", desc: "Swadhyay deepens knowledge through independent reading, reflection, and discussion. It transforms information into wisdom and strengthens inner awareness.", cta: "Start Swadhyay Today", href: "/education/swadhyay" },
+              { num: "03", title: "Chaturmas", sub: "Intensive Spiritual Season", desc: "Chaturmas is a sacred four-month spiritual period dedicated to deeper practice — daily pravachans, special vows, austerities, and community learning.", cta: "Participate in Chaturmas", href: "/education/chaturmas" },
             ].map((p, i) => (
               <Reveal key={p.title} delay={i * 0.1}>
                 <div style={{ background: "#fff", borderRadius: 24, padding: "40px 36px", border: "1.5px solid rgba(15,35,106,0.06)", height: "100%" }}>
@@ -198,9 +201,10 @@ export default function EducationPage() {
                       <p style={{ fontFamily: "var(--fb)", fontSize: 12, color: "var(--slate)", fontStyle: "italic", marginTop: 4 }}>{p.quoteEng}</p>
                     </div>
                   )}
-                  <Link href={p.href} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 16, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, padding: "12px 24px", borderRadius: 10, textDecoration: "none", background: i % 2 === 0 ? "var(--red)" : "var(--navy)", color: "#fff" }}>
+                  {/* <Link href={p.href} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 16, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, padding: "12px 24px", borderRadius: 10, textDecoration: "none", background: i % 2 === 0 ? "var(--red)" : "var(--navy)", color: "#fff" }}>
                     {p.cta} →
-                  </Link>
+                  </Link> */}
+                  <Button text={p.cta} href={p.href} primary={ i % 2 == 0 ? true : false } />
                 </div>
               </Reveal>
             ))}
@@ -236,7 +240,10 @@ export default function EducationPage() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
         <div style={{ maxWidth: 600, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <Reveal><h2 style={{ fontFamily: "var(--fh)", fontSize: 34, fontWeight: 300, color: "#fff", lineHeight: 1.3 }}>Begin Your <span style={{ fontWeight: 800, color: "var(--red-l)" }}>Learning Journey</span></h2></Reveal>
-          <Reveal delay={0.1}><Link href="/volunteer" style={{ display: "inline-flex", alignItems: "center", gap: 10, marginTop: 28, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16, background: "var(--red)", color: "#fff", padding: "18px 44px", borderRadius: 14, textDecoration: "none" }}>Become a YoungJains Member →</Link></Reveal>
+          <Reveal delay={0.1}>
+            {/* <Link href="/volunteer" style={{ display: "inline-flex", alignItems: "center", gap: 10, marginTop: 28, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16, background: "var(--red)", color: "#fff", padding: "18px 44px", borderRadius: 14, textDecoration: "none" }}>Become a YoungJains Member →</Link> */}
+            <Button text="Become a YoungJains Member" href="/volunteer" />
+          </Reveal>
           <Reveal delay={0.2}>
             <div style={{ marginTop: 40, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
               <div style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.6)" }}>YoungJains</div>

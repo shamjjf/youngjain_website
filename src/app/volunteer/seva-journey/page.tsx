@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Volunteer || Seva Journey" };
 
 
@@ -213,7 +214,7 @@ export default function SevaJourneyPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <Link href="/volunteer" style={{
+            {/* <Link href="/volunteer" style={{
               display: "inline-flex", alignItems: "center", gap: 10, marginTop: 36,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16,
               background: "var(--red)", color: "#fff",
@@ -221,7 +222,8 @@ export default function SevaJourneyPage() {
               transition: "all 0.4s",
             }}>
               Register Now →
-            </Link>
+            </Link> */}
+            <Button target="_blank" text="Register Now" href="https://app.sevakarmy.com/" />
           </Reveal>
         </div>
       </section>

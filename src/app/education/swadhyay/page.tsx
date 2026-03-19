@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Swadhyay" };
 
 export default function SwadhyayPage() {
@@ -30,6 +31,10 @@ export default function SwadhyayPage() {
           <Reveal><SectionHeader badge="CONTEMPLATION" title={<>Reflection on the <span style={{ fontWeight: 800, color: "var(--red)" }}>Nine Tattvas</span></>} subtitle="Swadhyay begins with contemplation of reality through the Nine Tattvas, especially the karmic process:" /></Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
             {[
+              { title: "Jīva (Soul)", desc: "The living, conscious, eternal entity that experiences pleasure, pain, and knowledge." },
+              { title: "Ajīva (Non-soul)", desc: "The non-living substances that make up the universe, including matter, space, time, and motion." },
+              { title: "Punya (Merit)", desc: "Positive karma that brings happiness and favorable experiences in the soul’s journey." },
+              { title: "Paap (Demerit)", desc: "Negative karma that causes suffering and binds the soul further in the cycle of birth and death." },
               { title: "Āsrava (Influx of Karma)", desc: "Understanding how actions, speech, and thoughts invite karmic particles into the soul." },
               { title: "Bandha (Bondage)", desc: "Recognizing how attachment and passions bind karma to the soul." },
               { title: "Samvara (Stopping Karma)", desc: "Practising restraint, awareness, and vows to prevent new karmic influx." },
@@ -77,13 +82,15 @@ export default function SwadhyayPage() {
             <Reveal delay={0.15}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                 {[
-                  { name: "Krodha", eng: "Anger", icon: "🔥" },
-                  { name: "Mana", eng: "Pride", icon: "👑" },
-                  { name: "Maya", eng: "Deceit", icon: "🎭" },
-                  { name: "Lobha", eng: "Greed", icon: "💰" },
+                  { name: "Krodha", eng: "Anger", src: "/assets/images/icons/education-swadhyay-angry-face.png" },
+                  { name: "Mana", eng: "Pride",  src: "/assets/images/icons/education-swadhyay-proudness-1.png" },
+                  { name: "Maya", eng: "Deceit", src: "/assets/images/icons/education-swadhyay-deception-1.png" },
+                  { name: "Lobha", eng: "Greed", src: "/assets/images/icons/education-swadhyay-greed.png" },
                 ].map((k, i) => (
                   <div key={k.name} style={{ background: "#fff", borderRadius: 16, padding: "24px 20px", border: "1.5px solid rgba(15,35,106,0.06)", textAlign: "center" }}>
-                    <div style={{ fontSize: 28, marginBottom: 10 }}>{k.icon}</div>
+                    <div style={{ fontSize: 28, marginBottom: 10, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                      <img width={36} height={36} src={k.src} />
+                    </div>
                     <div style={{ fontFamily: "var(--fh)", fontSize: 18, fontWeight: 700, color: "var(--navy)" }}>{k.name}</div>
                     <div style={{ fontFamily: "var(--fb)", fontSize: 12, color: "var(--red)", fontWeight: 600, marginTop: 2 }}>{k.eng}</div>
                   </div>
@@ -175,6 +182,8 @@ export default function SwadhyayPage() {
               { from: "Attachment", to: "Restraint" },
               { from: "Confusion", to: "Clarity" },
               { from: "Bondage", to: "Liberation" },
+              { from: "ignorance", to: "knowledge" },
+              { from: "inertia", to: "purposeful action" },
             ].map((item, i) => (
               <Reveal key={i} delay={0.2 + i * 0.07}>
                 <div style={{ background: "#fff", borderRadius: 14, padding: "22px 20px", border: "1.5px solid rgba(15,35,106,0.06)", textAlign: "center" }}>
@@ -200,14 +209,16 @@ export default function SwadhyayPage() {
           <Reveal><SectionHeader badge="OUR APPROACH" title={<>Swadhyay <span style={{ fontWeight: 800, color: "var(--red)" }}>Becomes</span></>} /></Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 14 }}>
             {[
-              { text: "Clarity in thinking", icon: "💡" },
-              { text: "Discipline in action", icon: "⚡" },
-              { text: "Calmness in conflict", icon: "🧘" },
-              { text: "Purpose in life", icon: "🎯" },
+              { text: "Clarity in thinking" },
+              { text: "Discipline in action" },
+              { text: "Calmness in conflict" },
+              { text: "Purpose in life" },
+              { text: "Compassion in relationships" },
+              { text: "Courage in challenges" },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div style={{ background: "#fff", borderRadius: 16, padding: "28px 20px", border: "1.5px solid rgba(15,35,106,0.06)", textAlign: "center" }}>
-                  <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                  {/* <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div> */}
                   <div style={{ fontFamily: "var(--fb)", fontSize: 15, fontWeight: 600, color: "var(--navy)" }}>{item.text}</div>
                 </div>
               </Reveal>
@@ -231,8 +242,10 @@ export default function SwadhyayPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
-              <Link href="/education" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Download Reflection Material</Link>
-              <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Join a Study Circle →</Link>
+              {/* <Link href="/education" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Download Reflection Material</Link>
+              <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Join a Study Circle →</Link> */}
+              <Button href="/education" text="Download Reflection Material" style={{ border: "solid gray 2px" }} primary={false} />
+              <Button href="/volunteer" text="Join a Study Circle" />
             </div>
           </Reveal>
           <Reveal delay={0.2}>

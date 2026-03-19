@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Chaturmas" };
 
 export default function ChaturmasPage() {
@@ -69,14 +70,12 @@ export default function ChaturmasPage() {
           <Reveal><SectionHeader badge="DISCIPLINE" title={<>A Time for Renewal and <span style={{ fontWeight: 800, color: "var(--red)" }}>Discipline</span></>} subtitle="Chaturmas invites both monks and lay followers to recommit to foundational values:" /></Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
             {[
-              { title: "Ahimsa", desc: "Non-violence in thought, speech, and action.", icon: "🕊️" },
-              { title: "Aparigraha", desc: "Limiting attachment and material excess.", icon: "🪷" },
-              { title: "Sanyam (Self-restraint)", desc: "Regulating desires and impulses.", icon: "🧘" },
+              { title: "Ahimsa", desc: "Non-violence in thought, speech, and action.", },
+              { title: "Aparigraha", desc: "Limiting attachment and material excess.", },
+              { title: "Sanyam (Self-restraint)", desc: "Regulating desires and impulses.", },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
-                <BentoCard title={item.title} desc={item.desc} tagColor={i % 2 === 0 ? "navy" : "red"}>
-                  <div style={{ fontSize: 28, marginTop: 8 }}>{item.icon}</div>
-                </BentoCard>
+                <BentoCard title={item.title} desc={item.desc} tagColor={i % 2 === 0 ? "navy" : "red"} />
               </Reveal>
             ))}
           </div>
@@ -153,9 +152,10 @@ export default function ChaturmasPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/volunteer" style={{ display: "inline-flex", alignItems: "center", gap: 10, marginTop: 28, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15, background: "var(--red)", color: "#fff", padding: "16px 36px", borderRadius: 12, textDecoration: "none" }}>
+            {/* <Link href="/volunteer" style={{ display: "inline-flex", alignItems: "center", gap: 10, marginTop: 28, fontFamily: "var(--fb)", fontWeight: 700, fontSize: 15, background: "var(--red)", color: "#fff", padding: "16px 36px", borderRadius: 12, textDecoration: "none" }}>
               Begin Your Chaturmas Journey →
-            </Link>
+            </Link> */}
+            <Button href="/volunteer" text="Begin Chaturmas Journey" />
           </Reveal>
           <Reveal delay={0.3}>
             <div style={{ marginTop: 48, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.06)" }}>

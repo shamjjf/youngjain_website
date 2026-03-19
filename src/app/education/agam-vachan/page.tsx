@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader, BentoCard } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Agam Vachan" };
 
 export default function AgamVachanPage() {
@@ -163,13 +164,15 @@ export default function AgamVachanPage() {
           <Reveal><SectionHeader badge="KEY TEXTS" title={<>Texts That Shape <span style={{ fontWeight: 800, color: "var(--red)" }}>Understanding</span></>} subtitle="During Agam Vachan, learners are introduced to foundational scriptures:" /></Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {[
-              { icon: "📖", title: "Acharanga Sutra", desc: "Explains monastic conduct and deeply elaborates non-violence." },
-              { icon: "📖", title: "Uttaradhyayana Sutra", desc: "Discourses on discipline, detachment, and spiritual wisdom." },
-              { icon: "📖", title: "Tattvartha Sutra", desc: "A systematic and philosophical summary of Jain doctrine." },
+              { icon: "/assets/images/icons/ahimsa-1.png", title: "Acharanga Sutra", desc: "Explains monastic conduct and deeply elaborates non-violence." },
+              { icon: "/assets/images/icons/stage.png", title: "Uttaradhyayana Sutra", desc: "Discourses on discipline, detachment, and spiritual wisdom." },
+              { icon: "/assets/images/icons/chakra-1.png", title: "Tattvartha Sutra", desc: "A systematic and philosophical summary of Jain doctrine." },
             ].map((text, i) => (
               <Reveal key={text.title} delay={i * 0.1}>
                 <div style={{ background: "#fff", borderRadius: 20, padding: "32px 24px", border: "1.5px solid rgba(15,35,106,0.06)", textAlign: "center", height: "100%" }}>
-                  <div style={{ fontSize: 36, marginBottom: 14 }}>{text.icon}</div>
+                    <div style={{ fontSize: 36, marginBottom: 14, display: "flex", justifyContent: "center" }}>
+                    <img width={36} height={36} src={text.icon} />
+                    </div>
                   <h3 style={{ fontFamily: "var(--fh)", fontSize: 20, fontWeight: 700, color: "var(--navy)", marginBottom: 8 }}>{text.title}</h3>
                   <p style={{ fontFamily: "var(--fb)", fontSize: 14, lineHeight: 1.7, color: "var(--slate)" }}>{text.desc}</p>
                 </div>
@@ -229,7 +232,17 @@ export default function AgamVachanPage() {
             </div>
           </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 14 }}>
-            {["Doctrinal clarity", "Intellectual strength", "Ethical awareness", "Confidence in Jain identity", "Depth in spiritual practice"].map((item, i) => (
+            {
+              [
+                "Doctrinal clarity", 
+                "Intellectual strength", 
+                "Ethical awareness", 
+                "Confidence in Jain identity", 
+                "Depth in spiritual practice",
+                "Compassionate engagement",
+                "Resilience in challenges",
+                "Commitment to lifelong learning"
+              ].map((item, i) => (
               <Reveal key={item} delay={0.15 + i * 0.06}>
                 <div style={{ background: "#fff", borderRadius: 14, padding: "20px 18px", border: "1.5px solid rgba(15,35,106,0.06)", textAlign: "center" }}>
                   <div style={{ fontFamily: "var(--fb)", fontSize: 12, fontWeight: 700, color: "var(--red)", letterSpacing: 1, marginBottom: 6 }}>0{i + 1}</div>
@@ -262,8 +275,10 @@ export default function AgamVachanPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
-              <Link href="/education" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Explore Jain Scriptures</Link>
-              <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Join the Agam Vachan Circle →</Link>
+              {/* <Link href="/education" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, border: "2px solid rgba(255,255,255,0.25)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Explore Jain Scriptures</Link>
+              <Link href="/volunteer" style={{ fontFamily: "var(--fb)", fontWeight: 700, fontSize: 14, background: "var(--red)", color: "#fff", padding: "14px 28px", borderRadius: 12, textDecoration: "none" }}>Join the Agam Vachan Circle →</Link> */}
+              <Button style={{ border: "solid gray 2px" }} href="/education" text="Explore Jain Scriptures" primary={false} />
+              <Button href="/volunteer" text="Join the Agam Vachan Circle" />
             </div>
           </Reveal>
           <Reveal delay={0.2}>

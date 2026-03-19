@@ -2,59 +2,60 @@
 import React from "react";
 import Link from "next/link";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
+import Button from "@/components/ui/button/button";
 export const metadata = { title: "Volunteer || Seva Pathway" };
 
 
 const pathways = [
   {
-    icon: "📚", title: "Education & Mentorship", points: [
+    title: "Education & Mentorship", points: [
       "Support Pāṭhshālā sessions for children.",
       "Explain Jain values through simple stories and activities.",
       "Encourage reflection, empathy, and mindful thinking.",
     ],
   },
   {
-    icon: "📖", title: "Swādhyāya & Learning Circles", points: [
+    title: "Swādhyāya & Learning Circles", points: [
       "Assist in group study and discussion spaces.",
       "Help create respectful, value-based dialogue.",
       "Connect teachings with real-life experiences.",
     ],
   },
   {
-    icon: "📋", title: "Event Coordination", points: [
+    title: "Event Coordination", points: [
       "Help with registrations, materials, and scheduling.",
       "Support session flow and participant guidance.",
       "Create a warm and welcoming learning environment.",
     ],
   },
   {
-    icon: "✍️", title: "Content & Digital Seva", points: [
+    title: "Content & Digital Seva", points: [
       "Write blogs and reflective pieces.",
       "Create social media content on Jain values.",
       "Assist with newsletters and short video scripts.",
     ],
   },
   {
-    icon: "🎨", title: "Media & Resource Creation", points: [
+    title: "Media & Resource Creation", points: [
       "Design learning materials and presentations.",
       "Develop youth-friendly explainer content.",
       "Translate philosophy into visual formats.",
     ],
   },
   {
-    icon: "🤝", title: "Community Seva & Welfare", points: [
+    title: "Community Seva & Welfare", points: [
       "Participate in food donation initiatives.",
       "Support eco-friendly and compassion campaigns.",
       "Engage in outreach rooted in ahimsā.",
     ],
   },
-  {
-    icon: "🌱", title: "Values-Aligned Projects", points: [
-      "Contribute to sustainability drives.",
-      "Support awareness and youth-led initiatives.",
-      "Work on projects guided by Jain ethics.",
-    ],
-  },
+  // {
+  //   title: "Values-Aligned Projects", points: [
+  //     "Contribute to sustainability drives.",
+  //     "Support awareness and youth-led initiatives.",
+  //     "Work on projects guided by Jain ethics.",
+  //   ],
+  // },
 ];
 
 const gains = [
@@ -63,6 +64,7 @@ const gains = [
   { num: "3", text: "Community belonging (Sangh)" },
   { num: "4", text: "Mindfulness in action" },
   { num: "5", text: "Leadership opportunities" },
+  { num: "6", text: "Ethical decision-making and value-based living" },
 ];
 
 const impactPoints = [
@@ -123,6 +125,30 @@ export default function SevaPathwaysPage() {
       </section>
 
       {/* ═══ 7 PATHWAY CARDS — 3 columns ═══ */}
+      {/* <section style={{ padding: "64px 40px 100px", background: "var(--snow)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div className="pw-grid">
+            {pathways.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.06}>
+                <div className="pw-card">
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
+                    <h3 style={{ fontFamily: "var(--fh)", fontSize: 18, fontWeight: 700, color: "var(--navy)" }}>{p.title}</h3>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    {p.points.map((pt, j) => (
+                      <div key={j} className="pw-point">
+                        <span className="pw-dot" />
+                        <span style={{ fontFamily: "var(--fb)", fontSize: 14, lineHeight: 1.65, color: "var(--slate)" }}>{pt}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section> */}
+      
       <section style={{ padding: "64px 40px 100px", background: "var(--snow)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div className="pw-grid">
@@ -130,11 +156,6 @@ export default function SevaPathwaysPage() {
               <Reveal key={p.title} delay={i * 0.06}>
                 <div className="pw-card">
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-                    <div style={{
-                      width: 48, height: 48, borderRadius: 14,
-                      background: i % 2 === 0 ? "rgba(15,35,106,0.06)" : "rgba(253,24,16,0.06)",
-                      display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24,
-                    }}>{p.icon}</div>
                     <h3 style={{ fontFamily: "var(--fh)", fontSize: 18, fontWeight: 700, color: "var(--navy)" }}>{p.title}</h3>
                   </div>
                   <div style={{ flex: 1 }}>
@@ -237,12 +258,11 @@ export default function SevaPathwaysPage() {
           <Reveal delay={0.15}>
             <div className="three-cols" style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 48 }}>
               {[
-                { text: "Start where you are.", icon: "🌿" },
-                { text: "Serve with awareness.", icon: "🙏" },
-                { text: "Grow with the Sangh.", icon: "✨" },
+                { text: "Start where you are.", },
+                { text: "Serve with awareness.", },
+                { text: "Grow with the Sangh.", },
               ].map((item, i) => (
                 <div key={i} className="path-pill" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.15)" }}>
-                  <span>{item.icon}</span>
                   <span>{item.text}</span>
                 </div>
               ))}
@@ -250,7 +270,7 @@ export default function SevaPathwaysPage() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <Link href="/volunteer/seva-journey" style={{
+            {/* <Link href="/volunteer/seva-journey" style={{
               display: "inline-flex", alignItems: "center", gap: 10, marginTop: 48,
               fontFamily: "var(--fb)", fontWeight: 700, fontSize: 16,
               background: "var(--red)", color: "#fff",
@@ -258,7 +278,8 @@ export default function SevaPathwaysPage() {
               transition: "all 0.4s",
             }}>
               Join the Seva Journey →
-            </Link>
+            </Link> */}
+            <Button text="Join the Seva Journey" href="https://app.sevakarmy.com/" target="_blank" />
           </Reveal>
         </div>
       </section>
