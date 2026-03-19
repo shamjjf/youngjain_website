@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FOOTER_GROUPS } from "@/lib/constants";
+import WhatsappLink from "../whatsapp-link/whatsapp-link";
+import { ScrollToTop } from "../ui/scroll-top/scroll-top";
 
 export function Footer() {
   const socialLinks = [
@@ -85,6 +87,8 @@ export function Footer() {
 
   return (
     <footer style={{ padding: "64px 40px 36px", background: "var(--navy-d)", color: "rgba(255,255,255,0.4)" }}>
+      <WhatsappLink />
+      <ScrollToTop />
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <div>

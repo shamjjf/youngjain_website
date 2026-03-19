@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useScrolled } from "@/hooks";
 import { NAV_ITEMS } from "@/lib/constants";
 import styles from "@/styles/Navbar.module.css";
+import Button from "../ui/button/button";
 
 export function Navbar() {
   const scrolled = useScrolled(50);

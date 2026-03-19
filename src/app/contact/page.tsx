@@ -74,7 +74,7 @@ export default function ContactPage() {
               {[
                 { icon: "✉️", label: "EMAIL", value: "info@youngjains.com", href: "mailto:info@youngjains.com" },
                 { icon: "📱", label: "PHONE", value: "+91 95 5280 5280", href: "tel:+91 95 5280 5280" },
-                { icon: "📍", label: "LOCATION", value: "India", href: "https://maps.app.goo.gl/GPuoW9vBBBVuBV1S8" },
+                { icon: "📍", label: "LOCATION", value: "Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India", href: "https://maps.app.goo.gl/GPuoW9vBBBVuBV1S8" },
              
               ].map((item, i) => (
                 <Reveal key={item.label} delay={0.15 + i * 0.06}>
