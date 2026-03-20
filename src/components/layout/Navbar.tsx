@@ -53,7 +53,7 @@ export function Navbar() {
               )}
             </div>
           ))}
-          <Link href="/contact" className={styles.joinBtn}>Contact Us</Link>
+          <Link href="/contact" className={styles.joinBtn}>Join Us</Link>
         </div>
 
         {/* ── Mobile toggle ── */}
@@ -105,7 +105,7 @@ export function Navbar() {
           ))}
           <Link href="/contact" className={styles.joinBtn} onClick={() => setMenuOpen(false)}
             style={{ marginTop: 16, width: "100%", textAlign: "center", display: "block" }}>
-            Join Us
+            Contact Us
           </Link>
         </div>
       )}
