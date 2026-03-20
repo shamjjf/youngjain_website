@@ -92,7 +92,7 @@ export default function ContactPage() {
               </Reveal>
             ))}
 
-            <Reveal delay={0.45}>
+            {/* <Reveal delay={0.45}>
               <div style={{ marginTop: 20 }}>
                 <div style={{ fontFamily: "var(--fb)", fontSize: 10, fontWeight: 700, color: "var(--red)", letterSpacing: 2, marginBottom: 10 }}>FOLLOW US</div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                   ))}
                 </div>
               </div>
-            </Reveal>
+            </Reveal> */}
           </div>
 
           {/* ── Right: Form ── */}
@@ -147,7 +147,7 @@ export default function ContactPage() {
                   <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
                     <div>
                       <label style={labelBase}>Phone</label>
-                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" style={inputBase}
+                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 " style={inputBase}
                         onFocus={e => e.target.style.borderColor = "var(--navy)"} onBlur={e => e.target.style.borderColor = "rgba(15,35,106,0.1)"} />
                     </div>
                     <div>
