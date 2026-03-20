@@ -95,7 +95,7 @@ export default function ContactPage() {
             </Reveal>
 
             {[
-              { icon: "✉️", label: "EMAIL", value: "Info@youngjains.org", href: "mailto:Info@youngjains.org" },
+              { icon: "✉️", label: "EMAIL", value: "Info@youngjains.com", href: "mailto:Info@youngjains.org" },
               { icon: "📱", label: "PHONE", value: "+91 95 5280 5280", href: "tel:+919552805280" },
               { icon: "📍", label: "LOCATION", value: "Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India", href: "https://maps.app.goo.gl/gHCnkmSYaxzG3yvAA" },
             ].map((item, i) => (
