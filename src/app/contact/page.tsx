@@ -67,10 +67,10 @@ export default function ContactPage() {
             </Reveal>
 
             {[
-              { icon: "✉️", label: "EMAIL", value: "contact@youngjains.org", href: "mailto:contact@youngjains.org" },
-              { icon: "📱", label: "PHONE", value: "+91 98765 43210", href: "tel:+919876543210" },
-              { icon: "📍", label: "LOCATION", value: "India", href: "#" },
-              { icon: "💬", label: "WHATSAPP", value: "Join our group", href: "#" },
+              { icon: "✉️", label: "EMAIL", value: "Info@youngjains.org", href: "mailto:Info@youngjains.org" },
+              { icon: "📱", label: "PHONE", value: "+91 95 5280 5280", href: "tel:+91 95 5280 5280" },
+              { icon: "📍", label: "LOCATION", value: "Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India", href: "https://maps.app.goo.gl/gHCnkmSYaxzG3yvAA" },
+              // { icon: "💬", label: "WHATSAPP", value: "Join our group", href: "#" },
             ].map((item, i) => (
               <Reveal key={item.label} delay={0.15 + i * 0.06}>
                 <a href={item.href} style={{ textDecoration: "none", display: "block", marginBottom: 12 }}>
