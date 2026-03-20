@@ -17,7 +17,7 @@ export default function AboutPage() {
         .provides-item{display:flex;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--ice)}
         .provides-item:last-child{border-bottom:none}
         .quote-block{border-left:4px solid var(--red);padding:20px 28px;background:rgba(253,24,16,0.03);border-radius:0 16px 16px 0;margin:32px 0}
-        .philosophy-img{width:100%;height:360px;object-fit:cover;border-radius:20px;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
+        .philosophy-img{width:100%;height:100%;aspect-ratio:3/2;object-fit:cover;border-radius:20px;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
         .philosophy-img:hover{transform:scale(1.03)}
         @media(max-width:900px){
           .about-grid-2{grid-template-columns:1fr!important}

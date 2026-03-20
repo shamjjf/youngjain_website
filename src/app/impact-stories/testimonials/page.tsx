@@ -162,7 +162,7 @@ export default function TestimonialsPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p style={{ fontFamily: "var(--fb)", fontSize: 15, color: "var(--slate)", lineHeight: 1.75 }}>
-              Send your testimonial to <strong style={{ color: "var(--navy)" }}>stories@youngjains.org</strong> and inspire others on their journey.
+              Send your testimonial to <strong style={{ color: "var(--navy)" }}><a href="mailto:info@youngjains.com">info@youngjains.com</a></strong> and inspire others on their journey.
             </p>
           </Reveal>
         </div>

@@ -235,16 +235,16 @@
   footer > div > div:first-child {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
-    text-align: center !important;
+    text-align: left !important;
   }
 
   footer img {
-    margin: 0 auto 12px !important;
+    margin: 0 0 12px !important;
   }
 
   footer > div > div:last-child {
     flex-direction: column !important;
-    text-align: center !important;
+    text-align: left !important;
     gap: 8px !important;
   }
 
@@ -624,5 +624,20 @@
   section {
     padding: 20px !important;
     break-inside: avoid;
+  }
+}
+
+/* ══════════════════════════════════════════
+   CONTACT PAGE — Responsive
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .contact-main {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 }

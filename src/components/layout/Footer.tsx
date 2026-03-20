@@ -90,7 +90,7 @@ export function Footer() {
       <WhatsappLink />
       <ScrollToTop />
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.06)", }}>
           <div>
             <Image
               src="/assets/images/icons/logo-white.png"
@@ -99,7 +99,7 @@ export function Footer() {
               height={37}
               style={{ opacity: 0.85, marginBottom: 16 }}
             />
-            <p style={{ fontFamily: "var(--fb)", fontSize: 13, lineHeight: 1.7, maxWidth: 280 }}>
+            <p style={{ fontFamily: "var(--fb)", fontSize: 13, lineHeight: 1.7, maxWidth: 280, textAlign: "left" }}>
               Empowering the next generation to live with compassion, awareness, and purpose through the timeless wisdom of Jain Dharma.
             </p>
             <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
@@ -138,9 +138,9 @@ export function Footer() {
           </div>
           {FOOTER_GROUPS.map((g) => (
             <div key={g.title}>
-              <div style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--red-l)", marginBottom: 18, textTransform: "uppercase" }}>{g.title}</div>
+              <div style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--red-l)", marginBottom: 18, textTransform: "uppercase", textAlign: "left" }}>{g.title}</div>
               {g.links.map((l) => (
-                <Link key={l.label} href={l.href} style={{ display: "block", fontFamily: "var(--fb)", fontSize: 13, padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s" }}
+                <Link key={l.label} href={l.href} style={{ display: "block", fontFamily: "var(--fb)", fontSize: 13, padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s", textAlign: "left" }}
                   onMouseOver={(e) => (e.currentTarget.style.color = "#fff")}
                   onMouseOut={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
                 >{l.label}</Link>
@@ -149,12 +149,12 @@ export function Footer() {
           ))}
 
           <div>
-            <div style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--red-l)", marginBottom: 18, textTransform: "uppercase" }}>Stay Connected</div>
+            <div style={{ fontFamily: "var(--fb)", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--red-l)", marginBottom: 18, textTransform: "uppercase", textAlign: "left" }}>Stay Connected</div>
             
             {/* <div style={{ display: "flex", gap: 8, alignItems: "flex-start", padding: "5px 0" }}>
               <div style={{ fontFamily: "var(--fb)", fontSize: 13, color: "rgba(255,255,255,0.4)" }}>Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India</div>
             </div> */}
-            <Link href="mailto:info@youngjains.com" style={{ display: "flex", gap: 8, alignItems: "center", padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s", textDecoration: "none" }}
+            <Link href="https://maps.app.goo.gl/mifPYTS9pSiC14bb6" style={{ display: "flex", gap: 8, alignItems: "center", padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s", textDecoration: "none" }}
               onMouseOver={(e) => (e.currentTarget.style.color = "#fff")}
               onMouseOut={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
             >
@@ -163,7 +163,7 @@ export function Footer() {
                   <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                 </svg>
               </div>
-              <span style={{ fontFamily: "var(--fb)", fontSize: 13 }}>Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India</span>
+              <span style={{ fontFamily: "var(--fb)", fontSize: 13, textAlign: "left" }}>Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India</span>
             </Link>
             
             <Link href="mailto:info@youngjains.com" style={{ display: "flex", gap: 8, alignItems: "center", padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s", textDecoration: "none" }}
@@ -175,7 +175,7 @@ export function Footer() {
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
                 </svg>
               </div>
-              <span style={{ fontFamily: "var(--fb)", fontSize: 13 }}>info@youngjains.com</span>
+              <span style={{ fontFamily: "var(--fb)", fontSize: 13, textAlign: "left" }}>info@youngjains.com</span>
             </Link>
 
             <Link href="tel:+919552805280" style={{ display: "flex", gap: 8, alignItems: "center", padding: "5px 0", color: "rgba(255,255,255,0.4)", transition: "color 0.3s", textDecoration: "none" }}
@@ -187,14 +187,15 @@ export function Footer() {
                   <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                 </svg>
               </div>
-              <span style={{ fontFamily: "var(--fb)", fontSize: 13 }}>+91 95 5280 5280</span>
+              <span style={{ fontFamily: "var(--fb)", fontSize: 13, textAlign: "left" }}>+91 95 5280 5280</span>
             </Link>
           </div>
         </div>
 
         <div style={{ paddingTop: 28, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12, fontFamily: "var(--fb)", fontSize: 12 }}>
-          <div>© 2026 Young Jains Community. All Rights Reserved.</div>
-          <div style={{ display: "flex", gap: 20 }}><span style={{ cursor: "pointer" }}>Terms</span><span style={{ cursor: "pointer" }}>Privacy</span></div>
+          <div>© 2026 Young Jains Community - An Initiative by <a target="_blank" href="https://jjfindia.com/">Jainam Jivika Foundation</a>. All Rights Reserved.</div>
+          <div style={{ display: "flex", gap: 20 }}><span style={{ cursor: "pointer" }}>Terms</span>
+          <span style={{ cursor: "pointer" }}>Privacy</span></div>
         </div>
       </div>
     </footer>

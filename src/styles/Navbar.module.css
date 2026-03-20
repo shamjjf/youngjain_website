@@ -57,7 +57,7 @@
 }
 .dropLink:hover { background: rgba(253,24,16,0.06); color: var(--red); }
 
-/* ── Join Button ── */
+/* ── Join / Contact Button ── */
 .joinBtn {
   font-family: var(--fb); font-weight: 700; font-size: 13px;
   background: var(--red); color: #fff;
@@ -70,24 +70,96 @@
   box-shadow: 0 8px 24px rgba(253,24,16,0.25);
 }
 
-/* ── Mobile ── */
+/* ── Burger ── */
 .burger { display: none; background: none; border: none; cursor: pointer; }
+
+/* ── Mobile Menu ── */
 .mobile {
-  background: #fff; padding: 20px 36px 28px;
+  background: #fff;
+  padding: 16px 24px 24px;
   border-bottom: 1px solid rgba(15,35,106,0.06);
   box-shadow: 0 12px 40px rgba(15,35,106,0.08);
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease;
 }
-.mobileLink {
-  display: block; font-family: var(--fb); font-size: 16px; font-weight: 600;
-  color: var(--navy); padding: 10px 0; border-bottom: 1px solid var(--ice);
-}
-.mobileSub { padding: 4px 0 8px 16px; }
-.mobileSubLink {
-  display: block; font-family: var(--fb); font-size: 14px;
-  color: var(--slate); padding: 7px 0; transition: color 0.2s;
-}
-.mobileSubLink:hover { color: var(--red); }
 
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile Item Container ── */
+.mobileItem {
+  border-bottom: 1px solid var(--ice);
+}
+
+.mobileItem:last-of-type {
+  border-bottom: none;
+}
+
+/* ── Mobile Link Row (link + toggle button) ── */
+.mobileLinkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileLink {
+  display: block;
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 14px 0;
+  flex: 1;
+  text-decoration: none;
+}
+
+/* ── Toggle +/- Button ── */
+.toggleBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(15,35,106,0.1);
+  background: rgba(15,35,106,0.03);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggleBtn:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+/* ── Mobile Sub-links ── */
+.mobileSub {
+  padding: 0 0 8px 16px;
+}
+
+.mobileSubLink {
+  display: block;
+  font-family: var(--fb);
+  font-size: 14px;
+  color: var(--slate);
+  padding: 9px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.mobileSubLink:hover {
+  color: var(--red);
+  background: rgba(253,24,16,0.04);
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .desktopNav { display: none; }
   .burger { display: block !important; }
@@ -97,9 +169,9 @@
   .inner { padding: 0 16px; }
   .logo { width: 140px; height: 36px; }
   .logoImg { height: 36px !important; }
-  .mobile { padding: 16px 16px 24px; max-height: 80vh; overflow-y: auto; }
-  .mobileLink { font-size: 15px; padding: 12px 0; }
-  .mobileSub { padding: 2px 0 6px 12px; }
-  .mobileSubLink { font-size: 13px; padding: 8px 0; }
-  .joinBtn { width: 100%; text-align: center; padding: 12px 20px; }
+  .mobile { padding: 12px 16px 20px; }
+  .mobileLink { font-size: 15px; padding: 13px 0; }
+  .mobileSubLink { font-size: 13px; padding: 8px 12px; }
+  .toggleBtn { width: 32px; height: 32px; border-radius: 8px; }
+  .joinBtn { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; margin-left: 0; }
 }
