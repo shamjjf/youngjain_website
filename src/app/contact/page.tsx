@@ -2,6 +2,22 @@
 import React, { useState } from "react";
 import { Reveal, PageHero, SectionHeader } from "@/components/ui";
 
+/*
+  ═══════════════════════════════════════════════════════
+  HOW TO SET UP (one-time, 2 minutes):
+  
+  1. Go to https://web3forms.com/
+  2. Enter your email (e.g., Info@youngjains.org)
+  3. You'll receive an ACCESS KEY via email
+  4. Replace "f4ef950f-8dea-4afd-8c87-5c2838a3c00a" below with that key
+  5. Done! All form submissions will come to your email.
+  
+  FREE: Unlimited submissions, no credit card.
+  ═══════════════════════════════════════════════════════
+*/
+
+const WEB3FORMS_KEY = "f4ef950f-8dea-4afd-8c87-5c2838a3c00a"; // ← Replace with your key from web3forms.com
+
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -15,22 +31,34 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("loading");
     setErrorMsg("");
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `YoungJains Contact: ${form.subject}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          phone: form.phone || "Not provided",
+          topic: form.subject,
+          message: form.message,
+        }),
       });
-      if (res.ok) {
+
+      const data = await res.json();
+
+      if (data.success) {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
-        const data = await res.json();
-        setErrorMsg(data.error || "Something went wrong.");
+        setErrorMsg(data.message || "Something went wrong. Please try again.");
         setStatus("error");
       }
     } catch {
-      setErrorMsg("Network error. Please check your connection.");
+      setErrorMsg("Network error. Please check your connection and try again.");
       setStatus("error");
     }
   };
@@ -68,12 +96,11 @@ export default function ContactPage() {
 
             {[
               { icon: "✉️", label: "EMAIL", value: "Info@youngjains.org", href: "mailto:Info@youngjains.org" },
-              { icon: "📱", label: "PHONE", value: "+91 95 5280 5280", href: "tel:+91 95 5280 5280" },
+              { icon: "📱", label: "PHONE", value: "+91 95 5280 5280", href: "tel:+919552805280" },
               { icon: "📍", label: "LOCATION", value: "Jainam Tower, Sai Park, Thergaon, Pune - 411033, Maharashtra, India", href: "https://maps.app.goo.gl/gHCnkmSYaxzG3yvAA" },
-              // { icon: "💬", label: "WHATSAPP", value: "Join our group", href: "#" },
             ].map((item, i) => (
               <Reveal key={item.label} delay={0.15 + i * 0.06}>
-                <a href={item.href} style={{ textDecoration: "none", display: "block", marginBottom: 12 }}>
+                <a href={item.href} target={item.label === "LOCATION" ? "_blank" : undefined} rel={item.label === "LOCATION" ? "noopener noreferrer" : undefined} style={{ textDecoration: "none", display: "block", marginBottom: 12 }}>
                   <div style={{
                     background: "#fff", borderRadius: 14, padding: "16px 20px",
                     border: "1.5px solid rgba(15,35,106,0.06)", display: "flex", gap: 14, alignItems: "center",
@@ -91,23 +118,6 @@ export default function ContactPage() {
                 </a>
               </Reveal>
             ))}
-
-            {/* <Reveal delay={0.45}>
-              <div style={{ marginTop: 20 }}>
-                <div style={{ fontFamily: "var(--fb)", fontSize: 10, fontWeight: 700, color: "var(--red)", letterSpacing: 2, marginBottom: 10 }}>FOLLOW US</div>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                  {["Instagram", "YouTube", "LinkedIn", "Twitter"].map((s) => (
-                    <div key={s} style={{
-                      padding: "7px 14px", borderRadius: 8, fontFamily: "var(--fb)", fontSize: 12, fontWeight: 600,
-                      background: "#fff", color: "var(--navy)", border: "1.5px solid rgba(15,35,106,0.08)", cursor: "pointer", transition: "all 0.3s",
-                    }}
-                      onMouseOver={e => { e.currentTarget.style.background = "var(--navy)"; e.currentTarget.style.color = "#fff"; }}
-                      onMouseOut={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "var(--navy)"; }}
-                    >{s}</div>
-                  ))}
-                </div>
-              </div>
-            </Reveal> */}
           </div>
 
           {/* ── Right: Form ── */}
